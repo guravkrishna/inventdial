@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Loacl Search Engine-User_Admin</title>
+	<!-- META TAGS -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- FAV ICON(BROWSER TAB ICON) -->
+	<link rel="shortcut icon" href="images/fav.ico" type="image/x-icon">
+	<!-- GOOGLE FONT -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins%7CQuicksand:500,700" rel="stylesheet">
+	<!-- FONTAWESOME ICONS -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<!-- ALL CSS FILES -->
+	<link href="css/materialize.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
+	<link href="css/responsive.css" rel="stylesheet">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+	<!--SCRIPT FILES-->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.js" type="text/javascript"></script>
+	<script src="js/materialize.min.js" type="text/javascript"></script>
+	<script src="js/custom.js"></script>
+</head>
+
+<body>
+	
+	<!--== MAIN CONTRAINER ==-->
+	<div class="container-fluid sb1">
+		<div class="row">
+			<!--== LOGO ==-->
+			<div class="col-md-2 col-sm-3 col-xs-6 sb1-1"> <a href="#" class="btn-close-menu"><i class="fa fa-times" aria-hidden="true"></i></a> <a href="#" class="atab-menu"><i class="fa fa-bars tab-menu" aria-hidden="true"></i></a>
+				<a href="main.jsp" class="logo"><img src="images/logo1.png" alt="" /> </a>
+			</div>
+			<!--== SEARCH ==-->
+			<div class="col-md-6 col-sm-6 mob-hide">
+				<form class="app-search">
+					<input type="text" placeholder="Search..." class="form-control"> <a href="#"><i class="fa fa-search"></i></a> </form>
+			</div>
+			<!--== NOTIFICATION ==-->
+			<!-- <div class="col-md-2 tab-hide">
+				<div class="top-not-cen"> <a class='waves-effect btn-noti' href='#'><i class="fa fa-commenting-o" aria-hidden="true"></i><span>5</span></a> <a class='waves-effect btn-noti' href='#'><i class="fa fa-envelope-o" aria-hidden="true"></i><span>5</span></a> <a class='waves-effect btn-noti' href='#'><i class="fa fa-tag" aria-hidden="true"></i><span>5</span></a> </div>
+			</div> -->
+			<!--== MY ACCCOUNT ==-->
+			<div class="col-md-2 col-sm-3 col-xs-6">
+				<!-- Dropdown Trigger -->
+				<a class='waves-effect dropdown-button top-user-pro' href='#' data-activates='top-menu'><img src="images/users/6.png" alt="" />My Account <i class="fa fa-angle-down" aria-hidden="true"></i> </a>
+				<!-- Dropdown Structure -->
+				<ul id='top-menu' class='dropdown-content top-menu-sty'>
+					<li><a href="myratingUser.jsp" class="waves-effect"><i class="fa fa-cogs"></i>My Rating</a> </li>
+					<li><a href="myfriendsrating.jsp"><i class="fa fa-bar-chart"></i> My friends Rating</a> </li>
+					<li><a href="passwordChangeUser.jsp"><i class="fa fa-buysellads" aria-hidden="true"></i>Change Password</a> </li>
+					<li><a href="editProfileUser.jsp"><i class="fa fa-usd" aria-hidden="true"></i>Edit Profile</a> </li>
+					<li><a href="upgradeprofile.jsp"><i class="fa fa-bell-o"></i>Upgrade profile</a> </li>
+					<li><a href="upgrademembership.jsp" class="waves-effect"><i class="fa fa-undo" aria-hidden="true"></i> Upgrade Membership</a> </li>
+					<li><a href="Useradmin.jsp" class="waves-effect"><i class="fa fa-undo" aria-hidden="true"></i>Manage Business</a> </li>
+					
+					<li class="divider"></li>
+					<li><a href="LogoutServlet" class="ho-dr-con-last waves-effect"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a> </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--== BODY CONTNAINER ==-->
+	 <div class="container-fluid sb2">
+		<div class="row">
+			<div class="sb2-1">
+				== USER INFO ==
+				
+				== LEFT MENU ==
+				<div class="sb2-13">
+					<ul class="collapsible" data-collapsible="accordion">
+						<li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-list-ul" aria-hidden="true"></i>Add Business</a>
+							<div class="collapsible-body left-sub-menu">
+								<ul>
+									<li><a href="basic-info-user.jsp">Basic Information</a> </li>
+									<li><a href="contact-info-user.jsp">Contact Information</a> </li>
+									<li><a href="other-info-user.jsp">Other Information</a> </li>
+									<li><a href="business-key-info.jsp">Business Keyword</a> </li>
+									<li><a href="upload-media-info,jsp">Upload Media</a> </li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i>Manage Business</a>
+							<div class="collapsible-body left-sub-menu">
+								<ul>
+									<li><a href="User_Product.jsp">Add product category</a> </li>
+									<li><a href="User_Product_Category.jsp">Add product subcategory</a> </li>
+									<li><a href="List_Category.jsp">List Category</a> </li>
+									<li><a href="List_Sub_Category.jsp">List Sub-Category</a> </li>
+									<li><a href="#">Manage Category</a> </li>
+									<li><a href="#">View ratings of my business</a> </li>
+								</ul>
+								
+							</div>
+						</li>
+						
+						<li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-list-ul" aria-hidden="true"></i>Product</a>
+							<div class="collapsible-body left-sub-menu">
+								<ul>
+									<li><a href="nearby-listings.html">Product List</a> </li>
+									<li><a href="userproduct.jsp">Add product</a> </li>
+									
+								</ul>
+								
+							</div>
+						</li>
+						
+						<li><a href="admin-setting.html"><i class="fa fa-cogs" aria-hidden="true"></i> Setting</a> </li>
+						<li><a href="admin-social-media.html"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Social Media</a> </li>
+					</ul>
+				</div>
+			</div> 
+			<!-- <div class="tz">
+			LEFT SECTION-->
+			<!-- <div class="tz-l">
+				<div class="tz-l-1">
+					<ul>
+						<li><img src="images/db-profile.jpg" alt="" /> </li>
+						<li><span>80%</span> profile compl</li>
+						<li><span>18</span> Notifications</li>
+					</ul>
+				</div> -->
+				
+			<!-- <div class="sb2-13">
+					<ul class="collapsible" data-collapsible="accordion">
+						<li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-list-ul" aria-hidden="true"></i>Add Business</a>
+							<div class="collapsible-body left-sub-menu">
+								<ul>
+									<li><a href="#">Basic Information</a> </li>
+									<li><a href="#">Contact Information</a> </li>
+									<li><a href="#">Other Information</a> </li>
+									<li><a href="#">Business Keyword</a> </li>
+									<li><a href="#">Upload Media</a> </li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"> </i>Manage Business</a>
+							<div class="collapsible-body left-sub-menu">
+								<ul>
+									<li><a href="User_Product.jsp">Add product category</a> </li>
+									<li><a href="User_Product_Category.jsp">Add product subcategory</a> </li>
+									<li><a href="List_Category.jsp">List Category</a> </li>
+									<li><a href="List_Sub_Category.jsp">List Sub-Category</a> </li>
+									<li><a href="nearby-listings.html">Product list</a> </li>
+									<li><a href="#">Manage Category</a> </li>
+									<li><a href="#">View ratings of my business</a> </li>
+								</ul>
+								
+							</div>
+						</li>
+						
+						<li><a href="admin-setting.html"><i class="fa fa-cogs" aria-hidden="true" </i> Setting</a> </li>
+						<li><a href="admin-social-media.html"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Social Media</a> </li>
+					</ul>
+				</div>
+			</div> -->
+			<!--== BODY INNER CONTAINER ==-->
+			
+	
+	
+</body>
+</html>
+
+</body>
+</html>

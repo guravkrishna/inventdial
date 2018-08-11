@@ -52,13 +52,14 @@ public class User_Free_Category_Listing extends HttpServlet {
 			 response.setContentType("text/html;charset=UTF-8");
 		       
 			    PrintWriter out = response.getWriter();
-			        String savePath = "E:/updated Eclipse Project/Local/WebContent/" + File.separator + SAVE_DIR;
+			        String savePath = "C:/Users/admin/git/Local/WebContent/" + File.separator + SAVE_DIR;
 			            File fileSaveDir=new File(savePath);
 			            if(!fileSaveDir.exists()){
 			                fileSaveDir.mkdir();
 			            }
 			           //int year;
-			            String email=request.getParameter("email"); 
+			            String phone=request.getParameter("con"); 
+			            System.out.println(phone);
 			            String BusinessTitle=request.getParameter("BusinessTitle");  
 		        		//String bname=request.getParameter("business_name");
 		                String subcategory=request.getParameter("subcategory"); 
@@ -73,6 +74,7 @@ public class User_Free_Category_Listing extends HttpServlet {
 /*		                String day=request.getParameter("day");*/
 		                String open=request.getParameter("open");
 		                String close=request.getParameter("close");
+		                String ptype=request.getParameter("ptype");
 		                String content=request.getParameter("description");
 		              
 		                /*int year;
@@ -98,18 +100,32 @@ public class User_Free_Category_Listing extends HttpServlet {
 				        Part part2=request.getPart("img");
 				        String fileName2=extractFileName(part2);
 				        System.out.println(fileName2);
-				        part2.write(savePath + File.separator + fileName2);
+				        if(fileName2.contains("jpg")){
+				        	 part2.write(savePath + File.separator + fileName2);
+				        } else{
+				        	
+				        	part2.write(savePath + File.separator + null);
+				        }
+				       
 				        
 				        Part part3=request.getPart("bimg");
 				        String fileName3=extractFileName(part3);
 				        System.out.println(fileName3);
-				        part3.write(savePath + File.separator + fileName3);
-				        
+				        if(fileName3.contains("jpg")){
+				        	 part3.write(savePath + File.separator + fileName3);
+				        } else{
+				        	
+				        	part3.write(savePath + File.separator + null);
+				        }
 				        Part part4=request.getPart("gimg");
 				        String fileName4=extractFileName(part4);
 				        System.out.println(fileName4);
-				        part4.write(savePath + File.separator + fileName4);
-				        
+				        if(fileName4.contains("jpg")){
+				        	 part4.write(savePath + File.separator + fileName4);
+				        } else{
+				        	
+				        	part2.write(savePath + File.separator + null);
+				        }
 				       /* Part part5=request.getPart("video");
 				        String fileName5=extractFileName(part5);
 				        System.out.println(fileName5);
@@ -128,56 +144,38 @@ public class User_Free_Category_Listing extends HttpServlet {
 						PreparedStatement ps=null;
 						
 		   	        // @SuppressWarnings("unused")
-		   	         
-		   	         String query = "INSERT into category(email,BusinessTitle, subcategory,year, address, day, open, close, content, coverimg, logo, img, bimg,gimg) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		   	        // String query="update signup s join category c on s.email=c.email set c.email=?,c.BusinessTitle=?,c.subcategory=?,c.year=?,c.address=?,c.day=?,c.open=?,c.close=?,c.content=?,c.coverimg=?,c.logo=?,c.img=?,c.bimg=?,c.gimg=?  where s.email='"+email+"' ";
+		   	         String query = "INSERT into category(contact,BusinessTitle, subcategory,year, address, day, open, close,package, content, coverimg, logo, img, bimg,gimg) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		   	         ps=connection.prepareStatement(query);
 		   	        
-		   	      ps.setString(1, email);
+		   	         ps.setString(1, phone);
 		   	         ps.setString(2, BusinessTitle);
-		   	         //ps.setString(3, bname);
 		   	         ps.setString(3, subcategory);
-		   	      ps.setString(4, year);
-		   	        // ps.setString(4, email);
+		   	         ps.setString(4, year);
 		   	         ps.setString(5, address);
 		   	         ps.setString(6, days);
 		   	         ps.setString(7, open);
 		   	         ps.setString(8, close);
-		   	      
-		   	         ps.setString(9, content);
-		   	     
-		   	         //ps.setLong(9, year);
-		   	         /*ps.setString(10, website);
-		   	         ps.setString(11, facelink);
-		   	         ps.setString(14, googlelink);
-		   	         ps.setString(15, map);*/
+		   	      ps.setString(9, ptype);
+		   	         ps.setString(10, content);
 		   	         
 		   	         String filePath= fileName ;
-		   	         ps.setString(10,filePath);
+		   	         ps.setString(11,filePath);
 		   	         
 		   	         String filePath1= fileName1 ;
-		   	         ps.setString(11,filePath1);
+		   	         ps.setString(12,filePath1);
 		        
 		   	         String filePath2= fileName2 ;
-		   	         ps.setString(12,filePath2);
+		   	         ps.setString(13,filePath2);
 		   	         
 		   	         String filePath3= fileName3 ;
-		   	         ps.setString(13,filePath3);
+		   	         ps.setString(14,filePath3);
 		   	         
 		   	         String filePath4= fileName4 ;
-		   	         ps.setString(14,filePath4);
-		        
-		   	        /* String filePath5= fileName5 ;
-		   	         ps.setString(15,filePath5);*/
+		   	         ps.setString(15,filePath4);
 		 
-		   	   
-		   	 
-		           /* ps.executeUpdate();*/
-		   	         
-		   	     
-		   	       
-		   	   
 		   	ps.execute();
-		       request.getRequestDispatcher("User_Other_Listing.jsp").include(request, response);
+		       request.getRequestDispatcher("UserOtherListing.jsp").include(request, response);
 			}catch(SQLException e){
 		   				e.printStackTrace();
 		   			} 

@@ -5,7 +5,9 @@
 <%!String user = "root";%>
 <%!String psw = "root";%>
 <%
-String email=request.getParameter("email");
+
+String contact=request.getParameter("contact");
+//String phone=request.getParameter("phone");
 String open = request.getParameter("open");
 String close=request.getParameter("close");
 String day=request.getParameter("day");
@@ -19,7 +21,7 @@ try
 {
 Class.forName(driverName);
 con = DriverManager.getConnection(url,user,psw);
-String sql="Update localsearchengine.listing l join localsearchengine.category c on l.email=c.email set c.open=?,c.close=?,c.day=?,c.content=?   where l.email='"+email+"'";
+String sql="Update listing l join category c on l.contact=c.contact set c.open=?,c.close=?,c.day=?,c.content=? where l.contact='"+contact+"'";
 ps = con.prepareStatement(sql);
 //ps.setString(1,id);
 ps.setString(1, open);

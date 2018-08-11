@@ -39,7 +39,7 @@ function validateForm() {
 try{ 
 	connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 statement=connection.createStatement();
-String sql ="SELECT * from listing l,category c where l.email=c.email";
+String sql ="SELECT * from listing l,category c where l.contact=c.contact";
 System.out.println(sql);
 resultSet = statement.executeQuery(sql);
  %>
@@ -94,16 +94,16 @@ resultSet = statement.executeQuery(sql);
 														</td> 
 														<td><span class="list-img"><img src="uploadimg/<%=resultSet.getString(19)%>" alt=""></span> </td>
 														
-														<td><a href="#"><span class="list-enq-name"><%=resultSet.getString(10)%></span><span class="list-enq-city"><%=resultSet.getString(7)%></span></a> </td>
+														<td><a href="#"><span class="list-enq-name"><%=resultSet.getString("fname")%></span><span class="list-enq-city"><%=resultSet.getString("category")%></span></a> </td>
 														
 														<%-- <td><%=resultSet.getString(25)%></td> --%>
-														<td> <span class="label label-primary"><%=resultSet.getString(5)%></span> </td>
-														<td> <span class="label label-primary"><%=resultSet.getString(16)%></span> </td>
-														<td> <a href="viewadminpaidlisting.jsp?email=<%=resultSet.getString("email")%>"><i class="fa fa-eye"></i></a></td>
+														<td> <span class="label label-primary"><%=resultSet.getString("contact")%></span> </td>
+														<td> <span class="label label-primary"><%=resultSet.getString("city")%></span> </td>
+														<td> <a href="viewadminpaidlisting.jsp?contact=<%=resultSet.getString("contact")%>"><i class="fa fa-eye"></i></a></td>
 														
-													<td> <a href="updateadminpaidlisting.jsp?email=<%=resultSet.getString("email")%>"><i class="fa fa-edit"></i></a></td>
+													<%-- <td> <a href="updateadminpaidlisting.jsp?email=<%=resultSet.getString("email")%>"><i class="fa fa-edit"></i></a></td>
 														<td> <a href="deleteadminpaidlisting.jsp?email=<%=resultSet.getString("email")%>"><i class="material-icons">delete</i></a></td>
-													
+													 --%>
 													</tr>
 													<% 
 													}

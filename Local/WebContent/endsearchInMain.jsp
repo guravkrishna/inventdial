@@ -19,7 +19,7 @@ try{
 	
 connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 statement=connection.createStatement();
-String sql ="select * from listing l,category c  where l.city='"+city+"' and l.category='"+category+"'";
+String sql ="select * from listing l,category c  where l.city like '%"+city+"%' and l.category like '%"+category+"%'";
 
 resultSet = statement.executeQuery(sql);
 if(resultSet.next()){
@@ -173,7 +173,7 @@ if(resultSet.next()){
 								<div class="row span-none">
 								
 								<%
-								String sql3 ="select * from listing l,category c  where l.city='"+city+"' and l.category='"+category+"'";
+								String sql3 ="select * from listing l,category c  where l.city like '%"+city+"%' and l.category='%"+category+"%'";
 								resultSet = statement.executeQuery(sql3);
 								if(resultSet.next()){%>
 									<h3 style="text-align:center"><%=resultSet.getString("category") %></h3><br>

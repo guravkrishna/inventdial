@@ -46,37 +46,24 @@ public class BusinessRegister extends HttpServlet {
          System.out.println(telephone);
          String city=request.getParameter("city");
          System.out.println(city);
-         String mail=request.getParameter("email");
-         PreparedStatement ps_sel=null;
-         ResultSet rs=null;
+        
+         String phone=request.getParameter("con");
+        
          try
          {
         	    DB_Connection obj_DB_Connection=new DB_Connection();
 				Connection connection=obj_DB_Connection.get_connection();
-				ps_sel = connection.prepareStatement("select * from signup where email = ?");
-				ps_sel.setString(1, mail);
 				
-				ps_sel.execute();
-				rs = ps_sel.getResultSet();
-				if(rs.next())
-				{
-					pw.println("<script type=\"text/javascript\">");
-                pw.println("alert('Already Registered')");
-                pw.println("location='register.jsp';");
-                pw.println("</script>");
-				}
-				else
-				{
-					String sql = "INSERT INTO listing(category,land,city,email)VALUES(?,?,?,?)";
+					String sql = "INSERT INTO listing(category,land,city,contact)VALUES(?,?,?,?)";
 	
 		   	         PreparedStatement ps = connection.prepareStatement(sql);
 		   	         ps.setString(1, category);
 		   	         ps.setString(2,telephone);
 		   	         ps.setString(3,city);
-		   	         ps.setString(4,mail);
+		   	         ps.setString(4,phone);
 		   	  	     ps.execute();
-			         request.getRequestDispatcher("SendOTP.jsp").include(request, response);
-				}
+			         request.getRequestDispatcher("UserLogin.jsp").include(request, response);
+				
          }
          catch(Exception e)
          {

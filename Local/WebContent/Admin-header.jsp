@@ -5,12 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Indias Best Local Search Engine</title>
+<title>Local Search Engine</title>
 	<!-- META TAGS -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- FAV ICON(BROWSER TAB ICON) -->
 	<link rel="shortcut icon" href="images/fav.ico" type="image/x-icon">
+	
 	<!-- GOOGLE FONT -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins%7CQuicksand:500,700" rel="stylesheet">
 	<!-- FONTAWESOME ICONS -->
@@ -97,17 +98,15 @@
 		<div class="row">
 			<!--== LOGO ==-->
 			<div class="col-md-2 col-sm-3 col-xs-6 sb1-1"> <a href="#" class="btn-close-menu"><i class="fa fa-times" aria-hidden="true"></i></a> <a href="#" class="atab-menu"><i class="fa fa-bars tab-menu" aria-hidden="true"></i></a>
-				<a href="main.jsp" class="logo"><img src="images/logo.png" alt="" style="width:90%;margin-top:10px;"/> </a>
+				<a href="main.jsp" class="logo"><img src="images/logo.gif" alt="" style="width:90%;margin-top:10px;"/> </a>
 			</div>
 			<!--== SEARCH ==-->
 			<div class="col-md-6 col-sm-6 mob-hide">
-				<form class="app-search">
-					<input type="text" placeholder="Search..." class="form-control"> <a href="#"><i class="fa fa-search"></i></a>
-			   </form>
+				<h2 align="center">Local Search Engine</h2>
 			</div>
 			<!--== NOTIFICATION ==-->
 			<div class="col-md-2 tab-hide">
-			 <%
+			        <%
 					    try{
 							connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 							statement=connection.createStatement();
@@ -121,7 +120,7 @@
  							 	<a class='waves-effect btn-noti' href='#'>
  							 		<i class="fa fa-envelope-o" aria-hidden="true"></i>
  							 			<span><%=resultSet.getString(1) %></span>
-  <%
+                    <%
 							}
 							connection.close();
 							} catch (Exception e) {
@@ -129,28 +128,30 @@
 							}
 					%>		
 			 
-			 <%
+			        <%
 					    try{
 							connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 							statement=connection.createStatement();
-							String sql =" select * from listing l join category c on l.email=c.email where catedate=current_date()";
+							String sql =" select * from listing l join category c on l.contact=c.contact where catedate=current_date()";
 							// select * from listing where id='"+search+"' or first_name like '%"+search+"%' ; 
 							resultSet = statement.executeQuery(sql);
 							if(resultSet.next()){												
-	                 %> 
+	                     %> 
   							<div class="dropdown-content1">
   								<a href="showallnotification.jsp">
     								<a href="#"><%=resultSet.getString(2)%> 
     								 <span><%=resultSet.getString(3) %></span>
     							</a>
-  </a>
-     <%
-							}
-							connection.close();
-							} catch (Exception e) {
-							e.printStackTrace();
-							}
-					%>	
+                                </a>
+                             <%
+								}
+								connection.close();
+								} 
+			                    catch (Exception e)
+			                    {
+							    	e.printStackTrace();
+							    }
+					         %>	
   </div>
 </div>
 				<!--  <a class='waves-effect btn-noti' href='#'><i class="fa fa-envelope-o" aria-hidden="true"></i><span>5</span></a>
@@ -162,15 +163,15 @@
 				<a class='waves-effect dropdown-button top-user-pro' href='#' data-activates='top-menu'><img src="images/users/6.png" alt="" />Tricky  <i class="fa fa-angle-down" aria-hidden="true"></i> </a>
 				<!-- Dropdown Structure -->
 				<ul id='top-menu' class='dropdown-content top-menu-sty'>
-					<li><a href="admin-setting.html" class="waves-effect"><i class="fa fa-cogs"></i>Admin Setting</a> </li>
-					<li><a href="admin-analytics.html"><i class="fa fa-bar-chart"></i> Analytics</a> </li>
-					<li><a href="admin-ads.html"><i class="fa fa-buysellads" aria-hidden="true"></i>Ads</a> </li>
-					<li><a href="admin-payment.html"><i class="fa fa-usd" aria-hidden="true"></i> Payments</a> </li>
-					<li><a href="admin-notifications.html"><i class="fa fa-bell-o"></i>Notifications</a> </li>
+					<li><a href="#" class="waves-effect"><i class="fa fa-cogs"></i>Admin Setting</a> </li>
+					<li><a href="#"><i class="fa fa-bar-chart"></i> Analytics</a> </li>
+					<li><a href="#"><i class="fa fa-buysellads" aria-hidden="true"></i>Ads</a> </li>
+					<li><a href="#"><i class="fa fa-usd" aria-hidden="true"></i> Payments</a> </li>
+					<li><a href="#"><i class="fa fa-bell-o"></i>Notifications</a> </li>
 					<li><a href="#" class="waves-effect"><i class="fa fa-undo" aria-hidden="true"></i> Backup Data</a> </li>
 					<li class="divider"></li>
 					
-	                 <li><a href="ChangePassword.jsp"><i class="fa fa-sign-in" aria-hidden="true"></i>Change Password</a></li>
+	                <!--  <li><a href="ChangePassword.jsp"><i class="fa fa-sign-in" aria-hidden="true"></i>Change Password</a></li> -->
 					 <li><a href="AdminLogoutServlet"><i class="fa fa-sign-in" aria-hidden="true"></i>Logout</a></li>
 				</ul>
 			</div>
@@ -279,7 +280,7 @@
 							<div class="collapsible-body left-sub-menu">
 								<ul>
 									<li><a href="admin-all-users.jsp">All Users</a> </li>
-									<li><a href="admin-list-users-add.html">Add New user</a> </li>
+									<li><a href="#">Add New user</a> </li>
 								</ul>
 							</div>
 						</li>
@@ -313,9 +314,9 @@
 								</ul>
 							</div>
 						</li>
-						<li><a href="admin-setting.html"><i class="fa fa-cogs" aria-hidden="true"></i> Setting</a></li>
+						<li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i> Setting</a></li>
 						<li><a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Social Media</a></li>
-						<li><a href="admin-login.jsp" target="_blank"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a> </li>
+						
 					</ul>
 				</div>
 			</div>

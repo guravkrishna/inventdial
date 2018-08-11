@@ -3,17 +3,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" href="images/fav.ico" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Operations</title>
 <script type="text/javascript">
-	  history.pushState(null,null,'admin');
+	  history.pushState(null,null,'admin.jsp');
 	  window.addEventListener('popstate',function(event){
-	  history.pushState(null,null,'admin');
+	  history.pushState(null,null,'admin.jsp');
 	  });
 </script>
 </head>
 <body>		
 		<%@include file="Admin-header.jsp" %>
+			<%
+			try{
+				connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+				statement=connection.createStatement();
+				String sql ="select count(contact) from listing";
+				System.out.println(sql);
+				// select * from listing where id='"+search+"' or first_name like '%"+search+"%' ; 
+				resultSet = statement.executeQuery(sql);
+				while(resultSet.next()){		    												
+	      %>
 			
 			<!--== BODY INNER CONTAINER ==-->
 			<div class="sb2-2">
@@ -29,24 +40,47 @@
 					<div class="tz-2-com tz-2-main">
 						<h4>Manage Booking</h4>
 						<div class="tz-2-main-com bot-sp-20">
+						<a href="showadminfreelisting.jsp">
 							<div class="tz-2-main-1 tz-2-main-admin">
 								<div class="tz-2-main-2"> <img src="images/icon/d1.png" alt=""><span>All Listings</span>
-									<p>All the Lorem Ipsum generators on the</p>
-									<h2>1024</h2> </div>
+									<!-- <p>All the Lorem Ipsum generators on the</p> -->
+									<h2><%=resultSet.getString(1)%></h2></div>
+									<%
+							         }
+							        %>
+							   </a>		
 							</div>
 							<div class="tz-2-main-1 tz-2-main-admin">
 								<div class="tz-2-main-2"> <img src="images/icon/d4.png" alt=""><span>Users</span>
-									<p>All the Lorem Ipsum generators on the</p>
-									<h2>428</h2> </div>
+									<!-- <p>All the Lorem Ipsum generators on the</p> -->
+									<% 
+										String sql1 ="select count(contact) from endusersignup";
+									    System.out.println(sql1);
+										resultSet = statement.executeQuery(sql1);
+										while(resultSet.next()){
+							     	%>
+									  <h2><%=resultSet.getString(1) %></h2></div>
+									<%
+									 }
+									%>	
 							</div>
 							<div class="tz-2-main-1 tz-2-main-admin">
-								<div class="tz-2-main-2"> <img src="images/icon/d3.png" alt=""><span>Leads</span>
-									<p>All the Lorem Ipsum generators on the</p>
-									<h2>53</h2> </div>
+								<div class="tz-2-main-2"> <img src="images/icon/d4.png" alt=""><span>Customers</span>
+									<!-- <p>All the Lorem Ipsum generators on the</p> -->
+								   <% 
+										String sql2 ="select count(contact) from signup";
+									    System.out.println(sql2);
+										resultSet = statement.executeQuery(sql2);
+										while(resultSet.next()){
+							     	%>	
+									  <h2><%=resultSet.getString(1) %></h2> </div>
+									<%
+									 }
+									%>
 							</div>
 							<div class="tz-2-main-1 tz-2-main-admin">
 								<div class="tz-2-main-2"> <img src="images/icon/d2.png" alt=""><span>Reviews</span>
-									<p>All the Lorem Ipsum generators on the</p>
+									<!-- <p>All the Lorem Ipsum generators on the</p> -->
 									<h2>53</h2> </div>
 							</div>
 						</div>
@@ -477,6 +511,13 @@
 					</div>
 				</div>
 			</div>
+			<%
+				
+			connection.close();
+			} catch (Exception e) {
+			e.printStackTrace();
+			}
+					%>
 		<!-- </div>
 	</div> -->
 	<%@include file="Admin_footer.html" %>

@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" href="images/fav.ico" type="image/x-icon">
 <script type="text/javascript">
 
 history.pushState(null,null,'Useradmin.jsp');
@@ -12,7 +13,7 @@ history.pushState(null,null,'Useradmin.jsp');
 
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>India's Local Search Engine</title>
 </head>
 <body>
 	<%@include file="user_header.jsp" %>
@@ -24,7 +25,7 @@ history.pushState(null,null,'Useradmin.jsp');
 					<ul>
 						<li><a href="main.jsp"><i class="fa fa-home" aria-hidden="true"></i> Home</a> </li>
 						<li class="active-bre"><a href="#"> Dashboard</a> </li>
-						<li class="page-back"><a href="main.jsp"><i class="fa fa-backward" aria-hidden="true"></i> Back</a> </li>
+						<li class="page-back"><a href="Useradmin.jsp"><i class="fa fa-backward" aria-hidden="true"></i> Back</a> </li>
 					</ul>
 				</div>
 				<div class="tz-2 tz-2-admin">
@@ -34,14 +35,36 @@ history.pushState(null,null,'Useradmin.jsp');
 					<div class="tz-2-main-com">
 						<div class="tz-2-main-1">
 							<div class="tz-2-main-2"> <img src="images/icon/d1.png" alt="" /><span>All Listings</span>
-								<p>All the Lorem Ipsum generators on the</p>
+								<!-- <p>All the Lorem Ipsum generators on the</p> -->
 								<h2>04</h2> </div>
 						</div>
-						<div class="tz-2-main-1">
+						 <%
+					    try{
+					    	String name=(String)session.getAttribute("name");
+					       
+					        System.out.println(name);
+							connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+							request.getSession(true);
+							statement=connection.createStatement();
+							String sql ="select count(review) from review r join category c on  r.contact=c.contact where r.contact='"+name+"'";
+							System.out.println(sql);
+							// select * from listing where id='"+search+"' or first_name like '%"+search+"%' ; 
+							resultSet = statement.executeQuery(sql);
+							if(resultSet.next()){												
+	                 %>   
+						<a href="showallreview.jsp"><div class="tz-2-main-1">
 							<div class="tz-2-main-2"> <img src="images/icon/d2.png" alt="" /><span>Review</span>
-								<p>All the Lorem Ipsum generators on the</p>
-								<h2>69</h2> </div>
-						</div>
+								<p>Show All Reviews</p>
+								<h2><%=resultSet.getString(1) %></h2>  
+								</div>
+						</div></a>
+				 	<%
+}
+connection.close();
+} catch (Exception e) {
+e.printStackTrace();
+}
+%> 
 						<div class="tz-2-main-1">
 							<div class="tz-2-main-2"> <img src="images/icon/d3.png" alt="" /><span>Messages</span>
 								<p>All the Lorem Ipsum generators on the</p>

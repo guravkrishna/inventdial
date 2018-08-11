@@ -17,6 +17,8 @@
     response.setContentType("text/html");
     String contact = request.getParameter("con");
     System.out.println(contact);
+    String title=request.getParameter("title");
+	System.out.println(title); 
 	
     try
 	{
@@ -36,7 +38,8 @@
 		        session.setAttribute("contact", contact);
 		        //out.println("welcome " + userid);
 		        //out.println("<a href='logout.jsp'>Log out</a>");
-		        response.sendRedirect("EndUserMain.jsp");
+		       // response.sendRedirect("enduserlistgrid.jsp?title");
+		        request.getRequestDispatcher("enduserlistgrid.jsp?BusinessTitle="+title).include(request, response);
 		    } else {
 		    	out.println("<script type=\"text/javascript\">");
 			   	out.println("alert('Incorrect OTP!');");

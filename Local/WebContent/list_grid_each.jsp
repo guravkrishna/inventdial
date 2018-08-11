@@ -104,6 +104,7 @@ while(resultSet.next()){
 					<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:080 4890 8490"><%=resultSet.getString("phone") %></a></li>
 					<li><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:tgs@site-example.com"><%=resultSet.getString("email") %></a></li> 
 					<li><i class="fa fa-user" aria-hidden="true"></i><%=resultSet.getString("fname") %> </li>
+					<li><i class="fa fa-map" aria-hidden="true"></i><a href="#map">Map</a>
 					</ul> 
 					</div>
 				</div>
@@ -591,7 +592,7 @@ while(resultSet.next()){
 						</div>
 						<!--END LISTING DETAILS: LEFT PART 7-->
 						<!--LISTING DETAILS: LEFT PART 8-->
-						<div class="pglist-p3 pglist-bg pglist-p-com">
+						<div class="pglist-p3 pglist-bg pglist-p-com" id="map">
 							<div class="pglist-p-com-ti pglist-p-com-ti-right">
 								<h3><span>Our</span> Location</h3> </div>
 							<div class="list-pg-inn-sp">

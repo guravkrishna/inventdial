@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>World Best Local Directory Website template</title>
+<title>India's Local Search Engine</title>
 	<!-- META TAGS -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,7 +59,7 @@
 		<div class="row">
 			<!--== LOGO ==-->
 			<div class="col-md-2 col-sm-3 col-xs-6 sb1-1"> <a href="#" class="btn-close-menu"><i class="fa fa-times" aria-hidden="true"></i></a> <a href="#" class="atab-menu"><i class="fa fa-bars tab-menu" aria-hidden="true"></i></a>
-				<a href="main.jsp" class="logo"><img src="images/logo.png" alt="" /> </a>
+				<a href="main.jsp" class="logo"><img src="images/logo.gif" alt="" style="margin-top:10px;" /> </a>
 			</div>
 			<!--== SEARCH ==-->
 			<div class="col-md-6 col-sm-6 mob-hide">
@@ -78,7 +78,7 @@
 							connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 							request.getSession(true);
 							statement=connection.createStatement();
-							String sql ="select * from signup where email='"+name+"'";
+							String sql ="select * from signup where contact='"+name+"'";
 							System.out.println(sql);
 							// select * from listing where id='"+search+"' or first_name like '%"+search+"%' ; 
 							resultSet = statement.executeQuery(sql);
@@ -96,9 +96,9 @@
 					<li><a href="myratingUser.jsp" class="waves-effect"><i class="fa fa-cogs"></i>My Rating</a> </li>
 					<li><a href="myfriendsrating.jsp"><i class="fa fa-bar-chart"></i> My friends Rating</a> </li>
 					
-					  <li><a href="passwordChangeUser.jsp?email=<%=resultSet.getString("email") %>" readonly> <i class="fa fa-usd" aria-hidden="true"></i>Change password</a> </li> 
+					<%--   <li><a href="passwordChangeUser.jsp?email=<%=resultSet.getString("email") %>" readonly> <i class="fa fa-usd" aria-hidden="true"></i>Change password</a> </li> 
 							
-					
+					 --%>
 					
 					
 					<li><a href="upgrademembership.jsp" class="waves-effect"><i class="fa fa-undo" aria-hidden="true"></i> Upgrade profile</a> </li>
@@ -127,27 +127,50 @@
 				 <!--== LEFT MENU ==-->
 					<div class="sb2-13">
 					<ul class="collapsible" data-collapsible="accordion">
-						<li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-list-ul" aria-hidden="true"></i>Add Business</a>
+						
+						<!-- <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i>Manage Business</a>
 							<div class="collapsible-body left-sub-menu">
 								<ul>
-									<li><a href="showbasicinfouser.jsp?email=<%=resultSet.getString("email") %>" type="hidden"> <i class="fa fa-us" aria-hidden="true"></i>All Information</a> </li>
+									<li><a href="Add_Business.jsp">Add New Business</a> </li>
+									<li><a href="Show_Business.jsp">View Business</a> </li>
+									
+									<li><a href="#">Manage Category</a> </li>
+									<li><a href="myratingUser.jsp">View ratings of my business</a> </li>
+								</ul>
+								
+							</div>
+						</li> -->
+						
+						<li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-list-ul" aria-hidden="true"></i>Add Listing</a>
+							<div class="collapsible-body left-sub-menu">
+								<ul>
+									<li><a href="customerfreelisting.jsp">Add product</a> </li>
+									
+								</ul>
+								
+							</div>
+						</li>
+						<li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-list-ul" aria-hidden="true"></i>Update Business</a>
+							<div class="collapsible-body left-sub-menu">
+								<ul>
+									<li><a href="showbasicinfouser.jsp?contact=<%=resultSet.getString("contact") %>" type="hidden"> <i class="fa fa-us" aria-hidden="true"></i>All Information</a> </li>
 								
 								
-				 	<li><a href="basicinfouser.jsp?email=<%=resultSet.getString("email") %>" type="hidden"> <i class="fa fa-us" aria-hidden="true"></i>Basic Information</a> </li>
+				 	<li><a href="basicinfouser.jsp?contact=<%=resultSet.getString("contact") %>" type="hidden"> <i class="fa fa-us" aria-hidden="true"></i>Basic Information</a> </li>
 					 
-					<li><a href="contactinfouser.jsp?email=<%=resultSet.getString("email") %>"> <i class="fa fa-us" aria-hidden="true"></i>Contact Information</a> </li>
+					<li><a href="contactinfouser.jsp?contact=<%=resultSet.getString("contact") %>"> <i class="fa fa-us" aria-hidden="true"></i>Contact Information</a> </li>
 							
 							
-					<li><a href="otherinfouser.jsp?email=<%=resultSet.getString("email") %>"> <i class="fa fa-us" aria-hidden="true"></i>Other Information</a> </li>
+					<li><a href="otherinfouser.jsp?contact=<%=resultSet.getString("contact") %>"> <i class="fa fa-us" aria-hidden="true"></i>Other Information</a> </li>
 					
 									<!--  <li><a href="other-info-user.jsp">Other Information</a> </li>  -->
-									<li><a href="#">Business Keyword</a> </li>
+									<!-- <li><a href="#">Business Keyword</a> </li> -->
 									
 									
 									
-									
-					<li><a href="uploadmediainfo.jsp?email=<%=resultSet.getString("email") %>"> <i class="fa fa-us" aria-hidden="true"></i>Upload Media</a> </li>
-					<%
+					<%-- 				
+					<li><a href="uploadmediainfo.jsp?contact=<%=resultSet.getString("contact") %>"> <i class="fa fa-us" aria-hidden="true"></i>Upload Media</a> </li>
+					 --%><%
 							}
 							connection.close();
 							} catch (Exception e) {
@@ -164,32 +187,9 @@
 								</ul>
 							</div>
 						</li>
-						<!-- <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i>Manage Business</a>
-							<div class="collapsible-body left-sub-menu">
-								<ul>
-									<li><a href="Add_Business.jsp">Add New Business</a> </li>
-									<li><a href="Show_Business.jsp">View Business</a> </li>
-									
-									<li><a href="#">Manage Category</a> </li>
-									<li><a href="myratingUser.jsp">View ratings of my business</a> </li>
-								</ul>
-								
-							</div>
-						</li> -->
 						
-						<li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-list-ul" aria-hidden="true"></i> Listing</a>
-							<div class="collapsible-body left-sub-menu">
-								<ul>
-									<li><a href="customerfreelisting.jsp">Add product</a> </li>
-									
-								</ul>
-								
-							</div>
-						</li>
-						
-						<li><a href="admin-setting.html"><i class="fa fa-cogs" aria-hidden="true"></i> Setting</a> </li>
-						<li><a href="admin-social-media.html"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Social Media</a> </li>
-					<!-- <li><a href="admin-social-media.jsp"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Visitors</a> </li> -->
+						<li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i> Setting</a> </li>
+						<li><a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Social Media</a> </li>
 					<li>
 					<%
 					    try{
@@ -199,13 +199,13 @@
 							connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 							request.getSession(true);
 							statement=connection.createStatement();
-							String sql ="select * from signup s join category c on s.email=c.email where s.email='"+name+"'";
+							String sql ="select * from signup s join category c on s.contact=c.contact where s.contact='"+name+"'";
 							System.out.println(sql);
 							// select * from listing where id='"+search+"' or first_name like '%"+search+"%' ; 
 							resultSet = statement.executeQuery(sql);
 							if(resultSet.next()){												
 	                 %>  
-	                 <li><a href="admin-social-media.jsp?subcategory=<%=resultSet.getString("subcategory")%>"><i class="fa fa-plus-square-o" aria-hidden="true"></i>Visitors</a> </li>
+	                   <li><a href="message.jsp?subcategory=<%=resultSet.getString("subcategory")%>"><i class="fa fa-plus-square-o" aria-hidden="true"></i>Visitors</a> </li>
 	                 <%
 							}
 							connection.close();
@@ -213,11 +213,7 @@
 							e.printStackTrace();
 							}
 					%>
-					
-					
-					
-					
-					</li>
+					</li> 
 					</ul>
 				</div>
 			</div> 

@@ -3,35 +3,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from rn53themes.net/themes/demo/directory/list-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 02 Jul 2018 05:09:08 GMT -->
 <body>
 
 	<%@include file="header.jsp" %>
-	
-	
-	<%-- <%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
-<%
-String id = request.getParameter("userid");
-String driver = "com.mysql.jdbc.Driver";
-String connectionUrl = "jdbc:mysql://localhost:3306/";
-String database = "localsearchengine";
-String userid = "root";
-String password = "root";
-try {
-Class.forName(driver);
-} catch (ClassNotFoundException e) {
-e.printStackTrace();
-}
-Connection connection = null;
-Statement statement = null;
-ResultSet resultSet = null;
-%> --%>
-
-
 <%
 try{
 connection = DriverManager.getConnection(connectionUrl+database, userid, password);

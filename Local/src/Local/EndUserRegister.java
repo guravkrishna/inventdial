@@ -53,7 +53,7 @@ public class EndUserRegister extends HttpServlet
   	         System.out.println("Connection :"+con);
   	        // @SuppressWarnings("unused")
   	         Statement sql_statement = con.createStatement();
-  	         String jdbc_insert_sql = "INSERT INTO endusersignup(firstname,lastname,contact,email, password,confirmpass,subcategory) VALUES(?,?,?,?,?,?,?)";
+  	         String jdbc_insert_sql = "INSERT INTO endusersignup(firstname,lastname,contact,endemail, password,confirmpass,subcategory) VALUES(?,?,?,?,?,?,?)";
 
   	         PreparedStatement ps = con.prepareStatement(jdbc_insert_sql);
   	         ps.setString(1, fname);

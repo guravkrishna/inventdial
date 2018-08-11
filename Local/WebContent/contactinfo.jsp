@@ -25,7 +25,7 @@ try
 {
 Class.forName(driverName);
 con = DriverManager.getConnection(url,user,psw);
-String sql="Update localsearchengine.listing l join localsearchengine.category c on l.email=c.email set l.fname=?,l.phone=?,c.fax=?,c.pin=?,c.toll=?,l.email=?,c.linkone=?,c.map=?   where l.email='"+email+"'";
+String sql="Update listing l join category c on l.contact=c.contact set l.fname=?,l.contact=?,c.fax=?,c.pin=?,c.toll=?,c.linkone=?,c.map=?   where l.contact='"+phone+"'";
 
 ps = con.prepareStatement(sql);
 
@@ -36,9 +36,9 @@ ps.setString(2, phone);
 ps.setString(3, fax);
 ps.setString(4, pin);
 ps.setString(5, toll);
-ps.setString(6, email);
-ps.setString(7, linkone);
-ps.setString(8, map);  
+//ps.setString(6, email);
+ps.setString(6, linkone);
+ps.setString(7, map);  
 
 
 

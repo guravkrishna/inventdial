@@ -14,11 +14,11 @@
 
 <%
 try{
-	String email=request.getParameter("email");
-	
+	//String email=request.getParameter("email");
+	String name=(String)session.getAttribute("name");
 connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 statement=connection.createStatement();
-String sql ="select * from localsearchengine.listing l join localsearchengine.category c on   l.email=c.email where l.email='"+email+"'";
+String sql ="select * from listing l join category c on l.contact=c.contact where l.contact='"+name+"'";
 
 resultSet = statement.executeQuery(sql);
 if(resultSet.next()){
@@ -28,9 +28,9 @@ if(resultSet.next()){
 <body>
 
  
-<!--  <input type="hidden" name="finame" value="<%=resultSet.getString("id") %>">-->
-<!--  <input type="text" name="id" value="<%=resultSet.getString("id") %>">-->
-
+<%-- <!--  <input type="hidden" name="finame" value="<%=resultSet.getString("id") %>"> -->
+<!--  <input type="text" name="id" value="<%=resultSet.getString("id") %>"> -->
+ --%>
 
 
 
@@ -62,7 +62,7 @@ if(resultSet.next()){
 												
 												
 												<div class="row">
-															 <input type="hidden" name="email"    value="<%=resultSet.getString("email") %>" readonly><br>
+															 <input type="text" name="contact"  value="<%=name%>" readonly><br>
 														</div>
 												
 												
@@ -144,7 +144,7 @@ e.printStackTrace();
 %>
 </body>
 </html> 
-<%@include file="footer.html" %>
+<%@include file="user_footer.html" %>
 </body>
 
 </html>

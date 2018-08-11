@@ -2,36 +2,30 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
-
-<%@include file="header.jsp" %>
-
 <body>
-
+<%@include file="header.jsp" %>
 	<section class="inn-page-bg">
 		<div class="container">
 			<div class="row">
 				<div class="inn-pag-ban">
 				<h4>Are You Looking For</h4>				
-<% 
-/* String city= request.getParameter("city");
-String category = request.getParameter("category"); */
-try{
-	
-connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-statement=connection.createStatement();
-String sql ="select * from listing l,category c  where l.city='"+city+"' and l.category='"+category+"'";
-
-resultSet = statement.executeQuery(sql);
-if(resultSet.next()){
-%>
+				<% 
+				 /* String city= request.getParameter("city");
+				String category = request.getParameter("category");*/
+				try
+				{	
+				connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+				statement=connection.createStatement();
+				String sql ="select * from listing l,category c  where l.city like '%"+city+"%' and l.category like '%"+category+"%'";
 				
-					 <h2><%=resultSet.getString("category") %>  </h2> 
+				resultSet = statement.executeQuery(sql);
+				if(resultSet.next()){
+				%>
+				  <h2><%=resultSet.getString("category") %>  </h2> 
 					 <%} %>
-					 </div>
+				</div>
 			</div>
-		</div>
-		
-						
+		</div>			
 	</section>
 	
 	<!--END LISTING LEAD FORM-->
@@ -40,9 +34,9 @@ if(resultSet.next()){
 			<div class="row">
 				<div class="dir-alp-con dir-alp-con-1">
 					<div class="col-md-3 dir-alp-con-left">
-						<div class="dir-alp-con-left-1">
-							<h3>Near By <%=resultSet.getString("category") %></h3> </div>
-									
+						<%-- <div class="dir-alp-con-left-1">
+							<h3>Near By <%=resultSet.getString("category") %></h3>
+						</div>	
 						<div class="dir-hom-pre dir-alp-left-ner-notb">
 						<% 
 						String sql1 ="select c.subcategory from listing l join category c on l.email=c.email where l.category='"+category+"' group by c.subcategory";
@@ -69,7 +63,7 @@ if(resultSet.next()){
 							<%
 							 }
 							%>	
-						</div>
+						</div> --%>
 						<!--==========Sub Category Filter============-->
 						<div class="dir-alp-l3 dir-alp-l-com">
 							<h4>Sub Category Filter</h4>
@@ -114,7 +108,7 @@ if(resultSet.next()){
 											<input class="with-gap" name="group1" type="radio" id="ldis2" />
 											<label for="ldis2">02 to 05km</label>
 										</li>
-										<li>
+										<!-- <li>
 											<input class="with-gap" name="group1" type="radio" id="ldis3" />
 											<label for="ldis3">05 to 10km</label>
 										</li>
@@ -125,9 +119,10 @@ if(resultSet.next()){
 										<li>
 											<input class="with-gap" name="group1" type="radio" id="ldis5" />
 											<label for="ldis5">20 to 30km</label>
-										</li>
+										</li> -->
 									</ul>
-								</form> <a href="#!" class="list-view-more-btn">view more</a> </div>
+								</form> <!-- <a href="#!" class="list-view-more-btn">view more</a>-->
+							 </div> 
 						</div>
 						<!--==========End Sub Category Filter============-->
 						<!--==========Sub Category Filter============-->
@@ -162,15 +157,31 @@ if(resultSet.next()){
 											</label>
 										</li>
 									</ul>
-								</form> <a href="javascript:void(0);" class="list-view-more-btn">view more</a> </div>
+								</form> <!-- <a href="javascript:void(0);" class="list-view-more-btn">view more</a> -->
+							 </div>
 						</div>
 						<!--==========End Sub Category Filter============-->
-					</div>
-					<div class="col-md-9 dir-alp-con-right list-grid-rig-pad">
+					</div></br>
+					
+					         <%
+								String sql3 ="select * from listing l,category c  where l.city like '%"+city+"%' and l.category like '%"+category+"%'";
+								resultSet = statement.executeQuery(sql3);
+								if(resultSet.next()){%>
+									<h3 style="text-align:center"><%=resultSet.getString("category") %></h3></br>
+								<%
+								}
+							 %>
+							 <%
+							  String sql4 ="select * from listing l join category c on l.contact=c.contact where l.category='"+category+"' group by c.subcategory";			
+								resultSet = statement.executeQuery(sql4);
+								while(resultSet.next()){
+						     %>
+					<%-- <div class="col-md-9 dir-alp-con-right list-grid-rig-pad">
 						<div class="dir-alp-con-right-1">
 							<div class="row">
 								<!--LISTINGS-->
-								<div class="row span-none">
+								
+							  <div class="row span-none">
 								
 								<%
 								String sql3 ="select * from listing l,category c  where l.city='"+city+"' and l.category='"+category+"'";
@@ -180,8 +191,7 @@ if(resultSet.next()){
 								<%
 								}
 								%>
-								
-								  <%
+								<%
 								  
 									String sql4 ="select * from listing l join category c on l.email=c.email where l.category='"+category+"' group by c.subcategory";			
 									resultSet = statement.executeQuery(sql4);
@@ -202,15 +212,49 @@ if(resultSet.next()){
 										  </a> 
 									</div>
 									<%
-									}
+									 }
 									%>	
+								   </div>
+									
+				         </div>
+				    </div>
+				 </div> --%>
+				<div class="col-md-9 dir-alp-con-right">
+						<div class="dir-alp-con-right-1">
+							<div class="row">
+								<!--LISTINGS-->
+								<div class="home-list-pop list-spac list-spac-1">
+									<!--LISTINGS IMAGE-->
+								   	<!-- <a href="EndUserLogin.jsp"> -->
+									<div class="col-md-3"> <img src="uploadimg/<%=resultSet.getString("logo")%>" alt="" /> </div>
+									<!--LISTINGS: CONTENT-->
+									
+									<div class="col-md-9 home-list-pop-desc inn-list-pop-desc"> <a href="EndUserLogin.jsp?BusinessTitle=<%=resultSet.getString("BusinessTitle")%>"><h3><%=resultSet.getString("BusinessTitle")%></h3></a>
+										<p><b>Address:</b> <%=resultSet.getString("address")%></p>
+										<%-- <div class="list-number">
+											<ul>
+												<li><img src="images/icon/phone.png" alt=""> <%=resultSet.getString("phone")%></li>
+												<li><img src="images/icon/mail.png" alt=""> <%=resultSet.getString("email")%></li>
+											</ul>
+										</div> --%> <!-- <span class="home-list-pop-rat">4.2</span> -->
+										<div class="list-enqu-btn">
+											<ul>
+												<li><a href="EndUserLogin.jsp"><i class="fa fa-commenting-o" aria-hidden="true"></i> Send SMS</a> </li>
+												<li><a href="EndUserLogin.jsp"><i class="fa fa-phone" aria-hidden="true"></i> Call Now</a> </li>
+											</ul>
+										</div>
+									</div>
+									 
+								</div>
+								<!--LISTINGS END-->
+							</div>
 						</div>
+					</div>
+						<%
+						 }
+						%>
 				</div>
-				</div>
-				</div>
-				</div>
-				
-			</div>
+		  </div>
 		</div>
 	</section>
 		

@@ -222,7 +222,7 @@ if(resultSet.next()){
 					
 									<div class="col-md-4">
 										 <%-- <a href="list_grid_each.jsp?title=<%=resultSet.getString("title")%>"> --%>
-										 <a href="enduserlistgrid.jsp">
+										 <a href="EndUserLogin.jsp">
 											<div class="list-mig-like-com com-mar-bot-30">
 												<div class="list-mig-lc-img"> <img src="images/listing/1.jpg" alt=""> <span class="home-list-pop-rat list-mi-pr">$720</span> </div>
 												<div class="list-mig-lc-con">

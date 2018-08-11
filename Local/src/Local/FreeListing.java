@@ -56,7 +56,7 @@ public class FreeListing extends HttpServlet {
 						PreparedStatement ps=null;
 		   	        // @SuppressWarnings("unused")
 		   	         
-		   	         String query = "update signup s join listing l on s.email=l.email set l.fname=?,l.lname=?,l.category=?,l.phone=?,l.land=?,l.email=?,l.city=?  where s.email='"+email+"' ";
+		   	         String query = "update signup s join listing l on s.contact=l.contact set l.fname=?,l.lname=?,l.category=?,l.contact=?,l.land=?,s.email=?,l.city=?  where s.contact='"+phone+"' ";
 		   	         ps=connection.prepareStatement(query);
 		   	        
 		   	         

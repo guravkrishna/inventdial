@@ -18,7 +18,9 @@
     
   <%
     response.setContentType("text/html");
-    String name = request.getParameter("email");
+    String name = request.getParameter("phone");
+    System.out.println(name);
+  
 	String password = request.getParameter("passw");
 	
 	/* Connection con = null;
@@ -33,7 +35,7 @@
 		            "root", "root");
 		    Statement st = con.createStatement();
 		    ResultSet rs;
-		    rs = st.executeQuery("select * from signup where email='" + name + "' and password='" + password + "'");
+		    rs = st.executeQuery("select * from signup where contact='"+name+"' and password='" + password + "'");
 		
 		 if (rs.next()) {
 		        session.setAttribute("name", name);
@@ -43,10 +45,11 @@
 		    } 
 		    else
 		    {
-		    	out.println("<script type=\"text/javascript\">");
+		    	/* out.println("<script type=\"text/javascript\">");
                 out.println("alert('Invalid Email or Password')");
                 out.println("location='UserLogin.jsp';");
-                out.println("</script>");
+                out.println("</script>"); */
+		    	response.sendRedirect("error_msg.jsp");
 		    }
 	   
 	}

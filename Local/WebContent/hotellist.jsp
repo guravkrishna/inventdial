@@ -24,7 +24,7 @@
 				      {
 					   connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 					   statement=connection.createStatement();
-						String sql1 ="select subcategory from category where category='Hotel and Resorts' group by subcategory";
+						String sql1 ="select c.subcategory from listing l join category c on l.email=c.email where l.category='Hotel and Resorts' group by c.subcategory";
 						
 						resultSet = statement.executeQuery(sql1);
 						while(resultSet.next()){

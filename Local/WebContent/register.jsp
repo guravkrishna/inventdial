@@ -5,7 +5,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <head>
-	<title>World Best Local Directory Website template</title>
+	<title>Local Search Engine</title>
 	<!-- META TAGS -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,7 +34,7 @@
 	  history.pushState(null,null,'register.jsp');
 	  });
 </script>	
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 function password(length, special) {
   var iteration = 0;
   var password = "";
@@ -57,16 +57,16 @@ function password(length, special) {
   document.getElementById("id").value=password;
  	return password;
 }
-</script>
+</script> -->
    <script type="text/javascript">
           function validateForm()
             {  
-            var x=document.forms["login"]["mail"].value;
+            var x=document.forms["login"]["phone"].value;
             var y=document.getElementById('actual').value;            
             
                 if (y=="taken")
                 {
-                       alert("Email Id already exist in database");
+                       alert("Your Contact Number already Exist");
                     return false;
                 }
                     
@@ -77,16 +77,16 @@ function password(length, special) {
 function loadXMLDoc()
 {
 var xmlhttp;
-var k=document.getElementById("email").value;
+var k=document.getElementById("phone").value;
 var urls="checkusername.jsp?ver="+k;
 
 if (window.XMLHttpRequest)
   {
-  xmlhttp=new XMLHttpRequest();
+    xmlhttp=new XMLHttpRequest();
   }
 else
   {
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
 xmlhttp.onreadystatechange=function()
   {
@@ -95,19 +95,33 @@ xmlhttp.onreadystatechange=function()
         document.getElementById("err").innerHTML=xmlhttp.responseText;
      }
   }
-xmlhttp.open("GET",urls,true);
-xmlhttp.send();
+    xmlhttp.open("GET",urls,true); 
+   xmlhttp.send();
 }
 </script>
 
 	
 </head>
 
-<body data-ng-app=""  onload="password(4)">
+<body data-ng-app="" >
 
 	
 	<section class="tz-register">
 			  <div class="log-in-pop">
+			  <div class="log-in-pop-left"> 
+			  <img src="images/login.jpg" style="width:240px;height:403px;"">
+			  <!-- 	<h1>Hello... <span>{{ name1 }}</span></h1>
+					<p>Don't have an account? Create your account. It's take less then a minutes</p>
+					<h4>Login with social media</h4>
+					<ul>
+						<li><a href="#"><i class="fa fa-facebook"></i> Facebook</a>
+						</li>
+						<li><a href="#"><i class="fa fa-google"></i> Google+</a>
+						</li>
+						<li><a href="#"><i class="fa fa-twitter"></i> Twitter</a>
+						</li>
+					</ul> -->
+			  </div>
 			  <div class="log-in-pop-right">  
 			  <a href="#" class="pop-close" data-dismiss="modal"><img src="images/cancel.html" alt="" />
 					</a>
@@ -118,34 +132,36 @@ xmlhttp.send();
 						<div class="row">
 							  <div class="input-field col s6">
 				                <input type="hidden" id="id" />
-								<input id="first_name" type="text" class="validate" name="fname" required  pattern="[A-Za-z]{3,20}" title="enter valid name">
+								<input id="first_name" type="text" class="validate" name="fname" oninput="this.value = this.value.replace(/[^a-zA-Z.]/g, '').replace(/(\..*)\./g,'$1');" required  Maxlength="20" minlength="3"  title="enter valid name">
 								<label>First name <span style="color:red">*</span></label>
 							</div>
 							<div class="input-field col s6" >
-								<input id="last_name" type="text" class="validate" name="lname" required  pattern="[A-Za-z]{1,20}" title="enter valid name">
+								<input id="last_name" type="text" class="validate" name="lname" oninput="this.value = this.value.replace(/[^a-zA-Z.]/g, '').replace(/(\..*)\./g,'$1');" required   title="enter valid name">
 								<label for="last_name">Last Name<span style="color:red">*</span></label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s6">
-								<input id="list_phone" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g,'$1');" class="validate"  name="phone" required pattern="[6789][0-9]{9}" Maxlength="10" minlength="10" title="enter digits only">
+								<input id="phone" type="text" onkeyup="loadXMLDoc()" onkeyup='check1();' oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g,'$1');"   name="phone"  pattern="[6789][0-9]{9}" Maxlength="10" minlength="10" title="enter digits only">
 								<label for="list_phone">Contact Number<span style="color:red">*</span></label>
+								<span id="err"> </span>
 							</div>
 							<div class="input-field col s6">
-								<input id="list_phone" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g,'$1');" class="validate"  name="altphone" required pattern="[6789][0-9]{9}" Maxlength="10" minlength="10" title="enter digits only">
-								<label for="list_phone">Alternative Number<span style="color:red">*</span></label>
+								<input id="altphone" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g,'$1');"  onkeyup='check1();'  name="altphone" pattern="[6789][0-9]{9}" Maxlength="10" minlength="10" title="enter digits only">
+								<label for="list_phone">Alternative Number</label>
+								 <span id='message2'></span> 
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s6">
-								<input id="email" oncopy="return false" onpaste="return false"  onkeyup="loadXMLDoc()" type="email" class="validate" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-								<label for="email">Email Id<span style="color:red">*</span></label>
-								 <span id="err"> </span> 
+								<input id="email" oncopy="return false" onpaste="return false"  onkeyup="loadXMLDoc()" onblur='checkemail();' type="email" class="validate" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+								<label for="email">Email Id</label>
+								 <!-- <span id="err"> </span>  -->
 							</div>
 							<div class="input-field col s6">
-								<input id="conemail" oncopy="return false" onpaste="return false"  type="email" class="validate" name="conemail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-								<label for="email">Confirm Email Id<span style="color:red">*</span></label>
-								 <span id="err"> </span> 
+								<input id="conemail" oncopy="return false" onpaste="return false"  type="email" class="validate" onblur='checkemail();' name="conemail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+								<label for="email">Confirm Email Id</label>
+								 <span id='message1'></span> 
 							</div>
 						</div>
 						<div class="row">
@@ -193,15 +209,31 @@ xmlhttp.send();
 		  }
 		}
 	</script>
+	
+	
+	<script>
+	var check1 = function() {
+		  if (document.getElementById('phone').value !=
+		    document.getElementById('altphone').value) {
+		    document.getElementById('message2').style.color = 'green';
+		    document.getElementById('message2').innerHTML = 'accepted';
+		  } else {
+		    document.getElementById('message2').style.color = 'red';
+		    document.getElementById('message2').innerHTML = 'not accepted';
+		  }
+		}
+	</script>
+	
+	
 	<script>
 	var checkemail = function() {
 		  if (document.getElementById('email').value ==
 		    document.getElementById('conemail').value) {
-		    document.getElementById('message').style.color = 'green';
-		    document.getElementById('message').innerHTML = 'matched';
+		    document.getElementById('message1').style.color = 'green';
+		    document.getElementById('message1').innerHTML = 'matched';
 		  } else {
-		    document.getElementById('message').style.color = 'red';
-		    document.getElementById('message').innerHTML = 'not matched';
+		    document.getElementById('message1').style.color = 'red';
+		    document.getElementById('message1').innerHTML = 'not matched';
 		  }
 		}
 	</script>

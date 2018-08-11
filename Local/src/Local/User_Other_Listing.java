@@ -41,7 +41,8 @@ public class User_Other_Listing extends HttpServlet {
 		// TODO Auto-generated method stub
 		try{
 			 response.setContentType("text/html;charset=UTF-8");
-			 String id = request.getParameter("id");
+			 String con = request.getParameter("con");
+			 System.out.println(con);
 			 			String land=request.getParameter("land");
 			 			String fax=request.getParameter("fax");  
 		        		String toll=request.getParameter("toll");
@@ -60,7 +61,7 @@ public class User_Other_Listing extends HttpServlet {
 						PreparedStatement ps=null;
 		   	        // @SuppressWarnings("unused")
 		   	         
-		   	         String query = "Update category set land=?, fax=?, toll=?, pin=?, linkone=?, linktwo=?, linkthree=?, linkfour=?, linkfive=? ,map=?where id="+id;
+		   	         String query = "Update category set land=?, fax=?, toll=?, pin=?, linkone=?, linktwo=?, linkthree=?, linkfour=?, linkfive=? ,map=?where contact='"+con+"'";
 		   	         ps=connection.prepareStatement(query);
 		   	        
 		   	         ps.setString(1, land);

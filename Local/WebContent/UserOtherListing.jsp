@@ -45,16 +45,9 @@ function validateForm() {
 		ResultSet resultSet = null;
 	%>  --%> 
 	 <%
-	 String email = request.getParameter("email");
-try{
-	
-connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-statement=connection.createStatement();
-String sql ="select email from localsearchengine.category" ;/*where; email="+email */;
-
-resultSet = statement.executeQuery(sql);
-if(resultSet.next()){
-%> 
+	 String con = request.getParameter("con");
+	 System.out.println(con);
+%>
 		<!--  jsp code-->
 		
 		
@@ -80,11 +73,11 @@ if(resultSet.next()){
 						</div>
 						<div class="hom-cre-acc-left hom-cre-acc-right">
 							<div class="">
-								<form  action="UserOtherjsp.jsp" method="" name="other">
+								<form  action="UserOtherjsp.jsp"  name="other">
 								
 									<div class="row">
 										<div class="input-field col s12">
-											<input id="product_title" name="email" type="hidden" class="validate" value='<%=email %>' readonly>
+											<input id="product_title" name="con" type="hidden" class="validate" value='<%=con %>' readonly>
 											<!-- <label for="list_name">E-Mail</label> -->
 										</div>
 									</div>
@@ -114,7 +107,7 @@ if(resultSet.next()){
 										<div class="input-field col s6">
 											<input type="text" name="pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  maxlength="6"  class="validate" >
 											
-											<label for="list_phone">Pin Code</label>
+											<label for="list_phone">Pin Code <span style="color:red">*</span></label>
 										</div>
 									</div>
 									
@@ -177,7 +170,7 @@ if(resultSet.next()){
 									</div>
 									<div class="row">
 										<div class="input-field col s12">
-											<input type="url" pattern="https://.*" name="map" class="validate" >
+											<input type="text" name="map" class="validate" >
 											 
 											 <label>Past your iframe code here</label>
 										</div>
@@ -195,13 +188,13 @@ if(resultSet.next()){
 			</div>
 		
 		
-	<%
+	<%-- <%
 }
 connection.close();
 } catch (Exception e) {
 e.printStackTrace();
 }
-%> 	
+%> 	 --%>
 		
 </body>
 </html>

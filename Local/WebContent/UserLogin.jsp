@@ -33,9 +33,9 @@
 	
 	<script type="text/javascript">
 	
-	history.pushState(null,null,'UserLogin');
+	history.pushState(null,null,'UserLogin.jsp');
 	  window.addEventListener('popstate',function(event){
-	  history.pushState(null,null,'UserLogin');
+	  history.pushState(null,null,'UserLogin.jsp');
 	  });
  // This is called with the results from from FB.getLoginStatus().
  function statusChangeCallback(response) {
@@ -166,6 +166,9 @@
       location.reload();}
    </script>
 				</div> -->
+				 <div class="log-in-pop-left"> 
+			 <img src="images/userlogin.jpg" style="width:227px;height:310px;""> 
+			  </div>
 				<div class="log-in-pop-right">
 					<a href="#" class="pop-close" data-dismiss="modal"><img src="images/cancel.html" alt="" />
 					</a>
@@ -173,9 +176,17 @@
 					<p>Don't have an account? Create your account. It's take less then a minutes</p>
 					<form class="s12" action="UserSession.jsp" method="">
 						<div>
-							<div class="input-field s12">
+							<!-- <div class="input-field s12">
 							<input id="email" type="email" class="validate" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
 								<label for="email">User Name<span style="color:red">*</span></label>
+							</div> -->
+							<!-- <div class="input-field s12">
+							<input id="email" type="text" class="validate"oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g,'$1');"  name="phone" required pattern="[6789][0-9]{9}" Maxlength="10" minlength="10">
+								<label for="email">Phone Number / Email Id<span style="color:red">*</span></label>
+							</div> -->
+							<div class="input-field s12">
+							<input id="email" type="text"  name="phone" required  >
+								<label for="email">Phone Number<span style="color:red">*</span></label>
 							</div>
 						</div>
 						<div>
@@ -186,13 +197,19 @@
 						</div>
 						<div>
 							<div class="input-field s4">
-								<input type="submit" value="Login" class="waves-effect waves-light log-in-btn">
+								<input type="submit" value="Login" class=" log-in-btn">
 								<p><span style="color:red">*</span> represents mandatory.</p>
 								 </div>
-						</div>
-						<div>
+						</div><br>
+						<!-- <div>
 							<div class="input-field s12"> <a href="forgot-pass.html">Reset password</a> | <a href="register.jsp"><input type="button" value="New Register"></a></div>
+						</div> -->
+						<div>
+						<h4> Not Register ? </h4><div class="input-field s12"><a href="register.jsp"><input type="button" value="Register"></a></div>
+						<div>
+							<a href="main.jsp"><span style="color:Blue">Go to Home</span></a>
 						</div>
+						
 					</form>
 					
 				</div>

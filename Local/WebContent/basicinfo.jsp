@@ -8,7 +8,7 @@
 //String id = request.getParameter("id");
 String fname=request.getParameter("fname");
 String lname=request.getParameter("lname");
-String phone=request.getParameter("phone");
+String phone=request.getParameter("contact");
 String land=request.getParameter("land");
 String email=request.getParameter("email");
 String category=request.getParameter("category");
@@ -33,7 +33,7 @@ try
 {
 Class.forName(driverName);
 con = DriverManager.getConnection(url,user,psw);
-String sql="Update localsearchengine.listing l join localsearchengine.category c on l.email=c.email set l.fname=?,l.lname=?,l.phone=?,l.land=?,l.email=?,l.category=?,c.address=?,l.city=?   where l.email='"+email+"'";
+String sql="Update listing l join category c on l.contact=c.contact set l.fname=?,l.lname=?,l.contact=?,l.land=?,l.category=?,c.address=?,l.city=?   where l.contact='"+phone+"'";
 
 ps = con.prepareStatement(sql);
 
@@ -43,10 +43,10 @@ ps.setString(1, fname);
 ps.setString(2, lname);
 ps.setString(3, phone);
 ps.setString(4, land);
-ps.setString(5, email);
-ps.setString(6, category);
-ps.setString(7, address);
-ps.setString(8, city);
+
+ps.setString(5, category);
+ps.setString(6, address);
+ps.setString(7, city);
 //ps.setString(7, landlinenum);
 //ps.setString(8, faxnum);
 //ps.setString(9, tollfreenum);

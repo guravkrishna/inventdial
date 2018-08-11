@@ -1,4 +1,6 @@
 <%@page import="Local.SendMobileOtp" %>
+<%@page import="Local.SecondPlace" %>
+<%@page import="Local.BulkSMS" %>
 
 <%@ page import = "java.io.*,java.util.*,javax.mail.*"%>
 <%@ page import = "javax.mail.internet.*,javax.activation.*"%>
@@ -12,7 +14,7 @@
 
 <!-- Mirrored from rn53themes.net/themes/demo/directory/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 02 Jul 2018 05:07:39 GMT -->
 <head>
-	<title>World Best Local Directory Website template</title>
+	<title>Indias Largest Local Search Engine</title>
 	<!-- META TAGS -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,9 +37,9 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 <script type="text/javascript">
-	history.pushState(null,null,'SendOTP');
+	history.pushState(null,null,'SendOTP.jsp');
 	  window.addEventListener('popstate',function(event){
-	  history.pushState(null,null,'SendOTP');
+	  history.pushState(null,null,'SendOTP.jsp');
 	  });
 </script>	
 	
@@ -50,19 +52,61 @@ function password(length, special) {
       var special = false;
   }
   while(iteration < length){
-    randomNumber = (Math.floor((Math.random() * 100)) % 94) + 33;
-    if(!special){
-      if ((randomNumber >=33) && (randomNumber <=47)) { continue; }
-      if ((randomNumber >=58) && (randomNumber <=64)) { continue; }
-      if ((randomNumber >=91) && (randomNumber <=96)) { continue; }
-      if ((randomNumber >=123) && (randomNumber <=126)) { continue; }
-    }
+    /* randomNumber = (Math.floor((Math.random() * 100)) % 94) + 33; */
+    randomNumber=Math.floor(Math.random() * 100); 
+     if(!special){
+      if ((randomNumber >=49) && (randomNumber <=57)) { continue; }
+    } 
     iteration++;
-    password += String.fromCharCode(randomNumber);
+    password += randomNumber;
   }
   document.getElementById('pwd').innerHTML=password;
   document.getElementById("id").value=password;
  	return password;
+}
+</script> 
+	<script>
+ 	
+ function myFunction() {
+    var x,y, text;
+
+    // Get the value of the input field with id="numb"
+    x = document.getElementById("origOTP").value;
+    y = document.getElementById("otp").value;
+
+    // If x is Not a Number or less than one or greater than 10
+    if (x==y) {
+        text = "OTP is Correct!";
+    } else {
+        text = "OTP is Incorrect!";
+    }
+    document.getElementById("demo").innerHTML = text; 
+} 
+
+</script>
+ <script>
+function myFunction1() {
+    var x,y, text;
+
+    // Get the value of the input field with id="numb"
+    x = document.getElementById("origOTP").value;
+    y = document.getElementById("otp").value;
+
+    // If x is Not a Number or less than one or greater than 10
+    if (x==y) {
+        
+    	/* alert("Correct OTP"); */
+    	
+        
+        
+    
+    } 
+    else{
+    	  alert("InCorrect OTP");
+    	
+    	  return false;
+    }
+    document.getElementById("demo1").innerHTML = text;
 }
 </script>
 	
@@ -70,181 +114,8 @@ function password(length, special) {
 
 <body data-ng-app="" >
 
-
-	<!-- <div id="preloader">
-		<div id="status">&nbsp;</div>
-	</div> -->
-	
-	<!--TOP SEARCH SECTION-->
-	<!-- <section class="bottomMenu dir-il-top-fix">
-		<div class="container top-search-main">
-			<div class="row">
-				<div class="ts-menu">
-					SECTION: LOGO
-					<div class="ts-menu-1">
-						<a href="main.html"><img src="images/aff-logo.png" alt=""> </a>
-					</div>
-					SECTION: BROWSE CATEGORY(NOTE:IT'S HIDE ON MOBILE & TABLET VIEW)
-					<div class="ts-menu-2"><a href="#" class="t-bb">All Pages <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-						SECTION: BROWSE CATEGORY
-						<div class="cat-menu cat-menu-1">
-							<div class="dz-menu">
-								<div class="dz-menu-inn">
-									<h4>Frontend Pages</h4>
-									<ul>
-										<li><a href="main.html">Home</a></li>
-										<li><a href="index-1.html">Home 1</a></li>
-										<li><a href="list.html">All Listing</a></li>
-										<li><a href="listing-details.html">Listing Details </a> </li>
-										<li><a href="price.html">Add Listing</a> </li>
-										<li><a href="list-lead.html">Lead Listing</a></li>
-										<li><a href="list-grid.html">Listing Grid View</a></li>
-									</ul>
-								</div>
-								<div class="dz-menu-inn">
-									<h4>Frontend Pages</h4>
-									<ul>
-										<li><a href="new-business.html"> New Listings </a> </li>
-										<li><a href="nearby-listings.html">Nearby Listings</a> </li>
-										<li><a href="customer-reviews.html"> Customer Reviews</a> </li>
-										<li><a href="trendings.html"> Top Trendings</a> </li>
-										<li><a href="how-it-work.html"> How It Work</a> </li>
-										<li><a href="advertise.html"> Advertise with us</a> </li>
-										<li><a href="price.html"> Price Details</a> </li>
-									</ul>
-								</div>
-								<div class="dz-menu-inn">
-									<h4>Frontend Pages</h4>
-									<ul>
-										<li><a href="about-us.html"> About Us</a> </li>
-										<li><a href="customer-reviews.html"> Customer Reviews</a> </li>
-										<li><a href="contact-us.html"> Contact Us</a> </li>
-										<li><a href="blog.html"> Blog Post</a> </li>
-										<li><a href="blog-content.html"> Blog Details</a> </li>
-										<li><a href="elements.html"> All Elements </a> </li>
-										<li><a href="shop-listing-details.html"> Shop Details </a> </li>
-										<li><a href="property-listing-details.html"> Property Details </a> </li>
-									</ul>
-								</div>
-								<div class="dz-menu-inn">
-									<h4>Dashboard Pages</h4>
-									<ul>
-										<li><a href="dashboard.html"> Dashboard</a> </li>
-										<li><a href="db-invoice.html"> Invoice</a> </li>
-										<li><a href="db-setting.html"> User Setting</a> </li>
-										<li><a href="db-all-listing.html"> All Listings</a> </li>
-										<li><a href="db-listing-add.html"> Add New Listing</a> </li>
-										<li><a href="db-review.html"> Listing Reviews</a> </li>
-										<li><a href="db-payment.html"> Listing Payments </a> </li>
-									</ul>
-								</div>
-								<div class="dz-menu-inn">
-									<h4>Dashboard Pages</h4>
-									<ul>
-										<li><a href="register.html"> User Register</a> </li>
-										<li><a href="login.html"> User Login</a> </li>
-										<li><a href="forgot-pass.html"> Forgot Password</a> </li>
-										<li><a href="db-message.html"> Messages</a> </li>
-										<li><a href="db-my-profile.html"> Dashboard Profile</a> </li>
-										<li><a href="db-post-ads.html"> Post Ads </a> </li>
-										<li><a href="db-invoice-download.html"> Download Invoice </a> </li>
-									</ul>
-								</div>
-								<div class="dz-menu-inn lat-menu">
-									<h4>Admin Panel Pages</h4>
-									<ul>
-										<li><a target="_blank" href="admin.html"> Admin</a> </li>
-										<li><a target="_blank" href="admin-all-listing.html"> All Listing</a> </li>
-										<li><a target="_blank" href="admin-all-users.html"> All Users</a> </li>
-										<li><a target="_blank" href="admin-analytics.html"> Analytics</a> </li>
-										<li><a target="_blank" href="admin-ads.html"> Advertisement</a> </li>
-										<li><a target="_blank" href="admin-setting.html"> Admin Setting </a> </li>
-										<li><a target="_blank" href="admin-payment.html"> Payments </a> </li>
-									</ul>
-								</div>
-							</div>
-							<div class="dir-home-nav-bot">
-								<ul>
-									<li>A few reasons you’ll love Online Business Directory <span>Call us on: +01 6214 6548</span> </li>
-									<li><a href="advertise.html" class="waves-effect waves-light btn-large"><i class="fa fa-bullhorn"></i> Advertise with us</a>
-									</li>
-									<li><a href="db-listing-add.html" class="waves-effect waves-light btn-large"><i class="fa fa-bookmark"></i> Add your business</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					SECTION: SEARCH BOX
-					<div class="ts-menu-3">
-						<div class="">
-							<form class="tourz-search-form tourz-top-search-form">
-								<div class="input-field">
-									<input type="text" id="top-select-city" class="autocomplete">
-									<label for="top-select-city">Enter city</label>
-								</div>
-								<div class="input-field">
-									<input type="text" id="top-select-search" class="autocomplete">
-									<label for="top-select-search" class="search-hotel-type">Search your services like hotel, resorts, events and more</label>
-								</div>
-								<div class="input-field">
-									<input type="submit" value="" class="waves-effect waves-light tourz-top-sear-btn"> </div>
-							</form>
-						</div>
-					</div>
-					SECTION: REGISTER,SIGNIN AND ADD YOUR BUSINESS
-					<div class="ts-menu-4">
-						<div class="v3-top-ri">
-							<ul>
-								<li><a href="UserLogin.jsp" class="v3-menu-sign"><i class="fa fa-sign-in"></i> Sign In</a> </li>
-								<li><a href="db-listing-add.html" class="v3-add-bus"><i class="fa fa-plus" aria-hidden="true"></i> Add Listing</a> </li>
-							</ul>
-						</div>
-					</div>
-					MOBILE MENU ICON:IT'S ONLY SHOW ON MOBILE & TABLET VIEW
-					<div class="ts-menu-5"><span><i class="fa fa-bars" aria-hidden="true"></i></span> </div>
-					MOBILE MENU CONTAINER:IT'S ONLY SHOW ON MOBILE & TABLET VIEW
-					<div class="mob-right-nav" data-wow-duration="0.5s">
-						<div class="mob-right-nav-close"><i class="fa fa-times" aria-hidden="true"></i> </div>
-						<h5>Business</h5>
-						<ul class="mob-menu-icon">
-							<li><a href="price.html">Add Business</a> </li>
-							<li><a href="register.html">Register</a> </li>
-							<li><a href="UserLogin.jsp">Sign In</a> </li>
-						</ul>
-						<h5>All Categories</h5>
-						<ul>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Help Services</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Appliances Repair & Services</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Furniture Dealers</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Packers and Movers</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Pest Control </a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Solar Product Dealers</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Interior Designers</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Carpenters</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Plumbing Contractors</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Modular Kitchen</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Internet Service Providers</a> </li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> -->
 	<section class="tz-register">
 			<div class="log-in-pop">
-			<!--  	<div class="log-in-pop-left">
-					<h1>Hello... <span>{{ name1 }}</span></h1>
-					<p>Don't have an account? Create your account. It's take less then a minutes</p>
-					<h4>Login with social media</h4>
-					<ul>
-						<li><a href="#"><i class="fa fa-facebook"></i> Facebook</a>
-						</li>
-						<li><a href="#"><i class="fa fa-google"></i> Google+</a>
-						</li>
-						<li><a href="#"><i class="fa fa-twitter"></i> Twitter</a>
-						</li>
-					</ul>
-				</div>-->
 				<div class="log-in-pop-right">
 					<!-- <a href="#" class="pop-close" data-dismiss="modal"><img src="images/cancel.html" alt="" />
 					</a> -->
@@ -261,6 +132,10 @@ function password(length, special) {
 					   String pass=request.getParameter("pass"); 
 					   
 					   String confirmpass=request.getParameter("confirmpass"); 
+					   String city=request.getParameter("city");
+					   System.out.println(city);
+					   String category=request.getParameter("category");
+					   String telephone=request.getParameter("telephone");
 					 String msg="Your OTP is ";
 					 String EmailID=request.getParameter("mail");
 					 String otp=request.getParameter("id");
@@ -268,23 +143,27 @@ function password(length, special) {
 				    System.out.println("EmailID :-"+EmailID);
 				     
 				  /*   SendMobileOtp.sendSms(phone,msg,otp);   */ 
-				  SendMobileOtp s=new SendMobileOtp() ;
-				  s.sendSms(phone, msg, otp);
-					 
+				 /*  SendMobileOtp s=new SendMobileOtp() ;
+				  s.sendSms(phone, msg, otp); */
+				 /*   SecondPlace ps=new SecondPlace();
+				  ps.sendlocation(city);  */
+				  BulkSMS b=new BulkSMS();
+				  BulkSMS.SMSSender(phone,msg,otp);
+					  
 					%>
 					
-					<form class="s12" action="UserLogin.jsp" method="post">
+					<form class="s12" action="./BusinessRegister" method="post" onsubmit="return myFunction1();">
 						
 						<div>
 							<div class="input-field s12">
 							 <input type="hidden" id="origOTP" name="origOTP" value="<%=otp%>"/>
-								<input type="text"  id="otp" class="validate"  name="otp" required title="enter OTP"  >
+								<input type="text"  id="otp" class="validate"  name="otp" required title="enter OTP"  onkeyup="myFunction()">
 								<label>Enter OTP</label>
 							</div>
 						</div>
-						<!-- <input type="hidden" name="pwd" id="pwd" for="pwd">
+						  <input type="hidden" name="pwd" id="pwd" for="pwd"> 
 		
-				 <input type="hidden" id="id" name="id"/> -->
+				 <input type="hidden" id="id" name="id" for="id"> 
 				 <div>
 				   <div class="input-field s12">
 								<input type="hidden"  class="validate"  required pattern="[a-zA-Z]+" title="enter  valid name"   name="fname" value='<%=first%>' readonly>
@@ -303,12 +182,35 @@ function password(length, special) {
 								
 							</div>
 						</div>
-						<div>
+						<%-- <div>
 							<div class="input-field s12">
-								<input type="hidden" class="validate" name="mail"  value='<%=mail %>' readonly>
+								<input type="hidden" class="validate" name="email"  value='<%=mail %>' readonly>
 							
 							</div>
+						</div> --%>
+						<div>
+						<div class="input-field s12">
+								<input type="hidden" id="autocomplete" placeholder="Enter City" name="city" value='<%=city %>' readonly class="autocomplete" value=""style="background-color:#fff;color:black;height:5.5rem;background-size:12.75pt;background-position-x:7.5pt;font-size`:20px;"
+						                      onFocus="geolocate()" required>
+						         
+							</div>
+							</div>
+							<div>
+								<div class="input-field s12">
+								<input type="hidden" id="autocomplete" placeholder="Enter City" name="category" value='<%=category %>' readonly class="autocomplete" value=""style="background-color:#fff;color:black;height:5.5rem;background-size:12.75pt;background-position-x:7.5pt;font-size`:20px;"
+						                      onFocus="geolocate()" required>
+						         
+							</div>
+						
+						        </div>
+						
+							<div>
+							<div class="input-field s12">
+								<input type="hidden"  name="telephone" class="validate" value='<%=telephone %>' readonly>
+								
+							</div>
 						</div>
+					    
 						<div>
 							<div class="input-field s12">
 								<input type="hidden" class="validate" name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value='<%=pass %>' readonly required>
@@ -327,6 +229,7 @@ function password(length, special) {
 							<div class="input-field s4">
 								<input type="submit" value="Submit" class="waves-effect waves-light log-in-btn"> </div>
 						</div>
+						<p id="demo"></p>
 					</form>
 				</div>
 			</div>

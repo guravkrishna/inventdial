@@ -1,15 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
 
-
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -92,88 +84,10 @@ try{
 				<div class="ts-menu">
 					<!--SECTION: LOGO-->
 					<div class="ts-menu-1">
-						<a href="main.jsp"><img src="images/aff-logo.png" alt=""> </a>
+						<a href="main.jsp"><img src="images/logo1.gif" alt=""> </a>
 					</div>
 					<!--SECTION: BROWSE CATEGORY(NOTE:IT'S HIDE ON MOBILE & TABLET VIEW)-->
-					<div class="ts-menu-2"><a href="#" class="t-bb">All Pages <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-						<!--SECTION: BROWSE CATEGORY-->
-						<div class="cat-menu cat-menu-1">
-							<div class="dz-menu">
-								<div class="dz-menu-inn">
-									<h4>Frontend Pages</h4>
-									<ul>
-										<li><a href="main.jsp">Home</a></li>
-										<li><a href="about_us.jsp"> About Us</a> </li>
-										<li><a href="contact_us.jsp"> Contact Us</a> </li>
-									</ul>
-								</div>
-								<div class="dz-menu-inn">
-									<h4>Business 2 Business</h4>
-									<ul>
-										<li> <a href="b2b.html">Electronics &amp; Electrical Supplies</a> </li>
-										<li> <a href="b2b.html">Industrial Machinery &amp; Equipments</a> </li>
-										<li> <a href="b2b.html">Construction Machinery &amp; Supplies</a> </li>
-										<li> <a href="b2b.html">Automobiles Spare Parts &amp; Services</a> </li>
-										
-									</ul>
-								</div>
-								<div class="dz-menu-inn">
-									<h4>Business 2 Customer</h4>
-									<ul>
-									
-										<li><a href="b2c.html"> JustDial</a> </li>
-										<li><a href="b2c.html">Sulekha</a> </li>
-										<li><a href="b2c.html">BizzcityInfo</a> </li>
-										<li><a href="b2c.html"> Hotel  </a> </li>
-										<li><a href="b2c.html">Flights </a> </li>
-									</ul>
-								</div>
-								<div class="dz-menu-inn">
-									<h4>Customer 2 Customer</h4>
-									<ul>
-										<li><a href="c2c.html">OLA</a> </li>
-										<li><a href="c2c.html">OLAX</a> </li>
-										<li><a href="c2c.html">UBER</a> </li>
-										<li><a href="c2c.html">Flipkart</a> </li>
-										
-									</ul>
-								</div>
-								<div class="dz-menu-inn">
-									<h4>Dashboard Pages</h4>
-									<ul>
-										<li><a href="#"> User Register</a> </li>
-										<li><a href="#"> User Login</a> </li>
-										<li><a href="#"> Forgot Password</a> </li>
-										<li><a href="#"> Messages</a> </li>
-										<li><a href="#"> Dashboard Profile</a> </li>
-										<li><a href="#"> Post Ads </a> </li>
-										<li><a href="#"> Download Invoice </a> </li>
-									</ul>
-								</div>
-								<div class="dz-menu-inn lat-menu">
-									<h4>Admin Panel Pages</h4>
-									<ul>
-										<li><a target="_blank" href="admin_login.jsp"> Admin</a> </li>
-										<li><a target="_blank" href="adminpaidlisting.jsp"> All Listing</a> </li>
-										<li><a target="_blank" href="#"> All Users</a> </li>
-										<li><a target="_blank" href="#"> Analytics</a> </li>
-										<li><a target="_blank" href="#"> Advertisement</a> </li>
-										<li><a target="_blank" href="#"> Admin Setting </a> </li>
-										<li><a target="_blank" href="#"> Payments </a> </li>
-									</ul>
-								</div>
-							</div>
-							<div class="dir-home-nav-bot">
-								<ul>
-									<li>A few reasons you’ll love Online Business Directory <span>Call us on: 080 8490 4890</span> </li>
-									<li><a href="advertise.html" class="waves-effect waves-light btn-large"><i class="fa fa-bullhorn"></i> Advertise with us</a>
-									</li>
-									<li><a href="Userfreelisting.jsp" class="waves-effect waves-light btn-large"><i class="fa fa-bookmark"></i> Add your business</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+					
 					<!--SECTION: SEARCH BOX-->
 					<div class="ts-menu-3">
 						<div class="">
@@ -209,24 +123,12 @@ try{
 						<div class="mob-right-nav-close"><i class="fa fa-times" aria-hidden="true"></i> </div>
 						<h5>Business</h5>
 						<ul class="mob-menu-icon">
-							<li><a href="price.html">Add Business</a> </li>
+							<li><a href="about_us.jsp">About us</a> </li>
+						    <li><a href="contact_us.jsp">Contact us</a> </li>
 							<li><a href="register.jsp">Register</a> </li>
-							<li><a href="login.html">Sign In</a> </li>
+							<li><a href="logoutenduser.jsp"> Logout</a> </li>
 						</ul>
-						<h5>All Categories</h5>
-						<ul>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Help Services</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Appliances Repair &amp; Services</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Furniture Dealers</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Packers and Movers</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Pest Control </a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Solar Product Dealers</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Interior Designers</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Carpenters</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Plumbing Contractors</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Modular Kitchen</a> </li>
-							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Internet Service Providers</a> </li>
-						</ul>
+						
 					</div>
 				</div>
 			</div>
@@ -239,11 +141,6 @@ try{
 	<script src="js/bootstrap.js" type="text/javascript"></script>
 	<script src="js/materialize.min.js" type="text/javascript"></script>
 	<script src="js/custom.js"></script>
-</body>
-
-
-<!-- Mirrored from rn53themes.net/themes/demo/directory/main.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 02 Jul 2018 05:04:53 GMT -->
-</html>
   <%
 							}
 							connection.close();

@@ -196,37 +196,40 @@ $(document).ready(function() {
 	//AUTO COMPLETE SEARCH SELECT
     $('#select-search.autocomplete').autocomplete({
         data: {
-            "Property Management Services": 'images/menu/1.png',
-            "Hospitals":'',
-            "Events":'', 
-            "Hotel and Resorts": 'images/menu/4.png',
-            "Education and Traninings": 'images/menu/2.png',
+        	"Hotel and Resorts": 'images/hotel/5.png',
+            "Education and Traninings": 'images/sm/9.png',
             "Internet Service Providers": 'images/menu/3.png',
-            "Computer Repair & Services": 'images/menu/5.png',
+        	"Property Management Services": 'images/menu/1.png',
+        	"Real Estates": 'images/real/real4.png',
+			"Travel and Transport": 'images/travel/4.png',
+        	"Computer Repair & Services": 'images/menu/5.png',
+        	"Gyms and Fitness": 'images/gym/3.png',
+			"Yoga Classes": 'images/gym/7.png',
+            "Hospitals":'images/hospital/2.png',
+            "Events":'images/event/7.png', 
+            "Professional Services": 'images/menu/4.png',
+            
+            
             "Coaching & Tuitions": 'images/menu/6.png',
             "Job Training": 'images/menu/6.png',
             "Skin Care & Treatment": 'images/menu/7.png',
-			"Real Estates": 'images/menu/1.png',
-			"Travel and Transport": 'images/menu/2.png',
+			
 			"Property and Rentels": 'images/menu/3.png',
-			"Professional Services": 'images/menu/4.png',
+			
 			"Domestic Help Services": 'images/menu/5.png',
 			"Home Appliances Repair & Services": 'images/menu/6.png',
+			"Sports":'images/sm/9.png',
 			"Furniture Dealers": 'images/menu/7.png',
 			"Packers and Movers": 'images/menu/1.png',
-			"Interior Designers": 'images/menu/2.png',
-			"Pest Control Services": 'images/menu/3.png',
-			"Plumbing Contractors & Dealers": 'images/menu/4.png',
-			"Modular Kitchen Dealers": 'images/menu/5.png',
-			"Web Designers Services": 'images/menu/6.png',
+			"Interior Designers": 'images/inter/t3.png',
+			
 			"Internet Service Providers": 'images/menu/7.png',
 			"Security System Dealers": 'images/menu/8.png',
 			"Entrance Exam Coaching": 'images/menu/1.png',
-			"Gyms and Fitness": 'images/menu/2.png',
-			"Yoga Classes": 'images/menu/3.png',
-			"Weight Loss Centres": 'images/menu/4.png',
+			
+			
 			"Dieticians & Nutritionists": 'images/menu/5.png',
-            "Health and Fitness": 'images/menu/8.png'
+            
         },
         limit: 8, // The max amount of results that can be shown at once. Default: Infinity.
         onAutocomplete: function(val) {

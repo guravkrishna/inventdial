@@ -10,11 +10,11 @@
  <%
 session.setAttribute("contact", null);
 session.invalidate();
-out.println("<script type=\"text/javascript\">");
+/* out.println("<script type=\"text/javascript\">");
 out.println("alert('Are You Sure to Logout!');");
 out.println("location='main.jsp';");
-out.println("</script>");
-/* response.sendRedirect("main.jsp"); */
+out.println("</script>"); */
+ response.sendRedirect("logout_success.jsp"); 
 %>
 
 </body>

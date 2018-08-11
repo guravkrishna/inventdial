@@ -16,6 +16,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>InsertReview</display-name>
+    <servlet-name>InsertReview</servlet-name>
+    <servlet-class>Local.InsertReview</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertReview</servlet-name>
+    <url-pattern>/InsertReview</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>BusinessRegister</display-name>
     <servlet-name>BusinessRegister</servlet-name>
     <servlet-class>Local.BusinessRegister</servlet-class>
@@ -293,5 +303,15 @@
   <servlet-mapping>
     <servlet-name>User_Other_Listing</servlet-name>
     <url-pattern>/User_Other_Listing</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddContact</display-name>
+    <servlet-name>AddContact</servlet-name>
+    <servlet-class>Local.AddContact</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddContact</servlet-name>
+    <url-pattern>/AddContact</url-pattern>
   </servlet-mapping>
 </web-app>

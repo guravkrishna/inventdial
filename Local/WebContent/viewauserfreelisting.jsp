@@ -14,7 +14,10 @@
 <body>
 <%@include file="user_header.jsp" %>
 		<%
-		 String email=request.getParameter("email"); 
+		/*  String email=request.getParameter("email");  */
+		String name=(String)session.getAttribute("name");
+	       
+        System.out.println(name);
 		/* String title=request.getParameter("title");
 		System.out.println(title); */
 		/* System.out.println(email);
@@ -38,7 +41,7 @@ ResultSet resultSet = null; */
 try{ 
 connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 statement=connection.createStatement();
-String sql="select * from listing l join category c on l.email=c.email where l.email='"+email+"'";
+String sql="select * from listing l join category c on l.contact=c.contact where l.contact='"+name+"'";
 System.out.println(sql);
 resultSet = statement.executeQuery(sql);
  while(resultSet.next()){%>
@@ -47,9 +50,9 @@ resultSet = statement.executeQuery(sql);
 				<!--== breadcrumbs ==-->
 				<div class="sb2-2-2">
 					<ul>
-						<li><a href="main.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a> </li>
+						<li><a href="main.jsp"><i class="fa fa-home" aria-hidden="true"></i> Home</a> </li>
 						<li class="active-bre"><a href="#"> View Business</a> </li>
-						<li class="page-back"><a href="#"><i class="fa fa-backward" aria-hidden="true"></i> Back</a> </li>
+						<li class="page-back"><a href="Useradmin.jsp"><i class="fa fa-backward" aria-hidden="true"></i> Back</a> </li>
 					</ul>
 				</div>
 				<div class="tz-2 tz-2-admin">
@@ -74,85 +77,85 @@ resultSet = statement.executeQuery(sql);
 												<tr>
 													<td>First Name</td>
 													<td>:</td>
-													<td><%=resultSet.getString(3)%></td>
+													<td><%=resultSet.getString("fname")%></td>
 												</tr>
 												<tr> 
 													<td>Last Name</td>
 													<td>:</td>
-													<td><%=resultSet.getString(4)%></td>
+													<td><%=resultSet.getString("lname")%></td>
 												</tr>
 												<tr>
 													<td>Title</td>
 													<td>:</td>
-													<td><%=resultSet.getString(2)%></td>
+													<td><%=resultSet.getString("BusinessTitle")%></td>
 												</tr>
 												<tr>
 													<td>Contact Number</td>
 													<td>:</td>
-													<td><%=resultSet.getString(5)%></td>
+													<td><%=resultSet.getString("contact")%></td>
 												</tr>
 												<tr>
 													<td>Address</td>
 													<td>:</td>
-													<td><%=resultSet.getString(12)%></td>
+													<td><%=resultSet.getString("address")%></td>
 												</tr>
 												<tr>
 													<td>Package</td>
 													<td>:</td>
-													<td><%=resultSet.getString(16)%></td>
+													<td><%=resultSet.getString("package")%></td>
 												</tr>
 												<tr>
 													<td>Days</td>
 													<td>:</td>
-													<td><span class="label label-danger"><%=resultSet.getString(13)%></span>
+													<td><span class="label label-danger"><%=resultSet.getString("day")%></span>
 													</td>
 												</tr>
 												<tr>
 													<td>Opening Time</td>
 													<td>:</td>
-													<td><span class="label label-danger"><%=resultSet.getString(14)%></span>
+													<td><span class="label label-danger"><%=resultSet.getString("open")%></span>
 													</td>
 												</tr>
 												<tr>
 													<td>Closing Time</td>
 													<td>:</td>
-													<td><span class="label label-danger"><%=resultSet.getString(15)%></span>
+													<td><span class="label label-danger"><%=resultSet.getString("close")%></span>
 													</td>
 												</tr>
 												<tr>
 													<td>Content</td>
 													<td>:</td>
-													<td><span class="label label-success"><%=resultSet.getString(17)%></span> </td>
+													<td><span class="label label-success"><%=resultSet.getString("content")%></span> </td>
 												</tr>
 												<tr>
 													<td>Year</td>
 													<td>:</td>
-													<td><span class="label label-success"><%=resultSet.getString(18)%></span> </td>
+													<td><span class="label label-success"><%=resultSet.getString("year")%></span> </td>
 												</tr>
 												<tr>
 													<td>Landline Number</td>
 													<td>:</td>
-													<td><span class="label label-success"><%=resultSet.getString(25)%></span> </td>
+													<td><span class="label label-success"><%=resultSet.getString("land")%></span> </td>
 												</tr>
 												<tr>
 													<td>Fax Number</td>
 													<td>:</td>
-													<td><span class="label label-success"><%=resultSet.getString(26)%></span> </td>
+													<td><span class="label label-success"><%=resultSet.getString("fax")%></span> </td>
 												</tr>
 												<tr>
 													<td>Toll Free Number</td>
 													<td>:</td>
-													<td><span class="label label-success"><%=resultSet.getString(27)%></span> </td>
+													<td><span class="label label-success"><%=resultSet.getString("toll")%></span> </td>
 												</tr>
 												<tr>
 													<td>Pincode</td>
 													<td>:</td>
-													<td><span class="label label-success"><%=resultSet.getString(28)%></span> </td>
+													<td><span class="label label-success"><%=resultSet.getString("pin")%></span> </td>
 												</tr>
 												<tr>
 													<td>Link</td>
 													<td>:</td>
-													<td><span class="label label-primary"><%=resultSet.getString(29)%></span> </td>
+													<td><span class="label label-primary"><%=resultSet.getString("link")%></span> </td>
 												</tr>
 												
 											</tbody>

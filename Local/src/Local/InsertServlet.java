@@ -65,22 +65,22 @@ public class InsertServlet extends HttpServlet {
 	             Class.forName("com.mysql.jdbc.Driver");
 	  	         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/localsearchengine","root", "root");
 	  	         System.out.println("Connection :"+con);
-	  	        // @SuppressWarnings("unused")
+	  	        /*// @SuppressWarnings("unused")
 	  	        ps_sel = con.prepareStatement("select firstname from signup where email = ?");
 	  	        System.out.println(ps_sel);
-				ps_sel.setString(1, email);
+				ps_sel.setString(1, email);*/
 				
-				ps_sel.execute();
+				/*ps_sel.execute();
 				rs = ps_sel.getResultSet();
 				if(rs.next())
-				{
-					out.println("<script type=\"text/javascript\">");
+				{*/
+					/*out.println("<script type=\"text/javascript\">");
 	                out.println("alert('Already Your Email Registered ')");
 	                out.println("location='register.jsp';");
 	                out.println("</script>");
 				}
 				else
-				{
+				{*/
 					    ps = con.prepareStatement("INSERT INTO signup(firstname,lastname,contact,altcontact,email,password) VALUES(?,?,?,?,?,?)");
 			  	         //inst = con.prepareStatement();
 			  	        // String jdbc_insert_sql = "INSERT INTO signup(firstname,lastname,contact,altcontact,email,password) VALUES(?,?,?,?,?,?)";
@@ -94,7 +94,7 @@ public class InsertServlet extends HttpServlet {
 			  	         ps.setString(6, pass);
 			  		   	ps.execute();
 			  		       request.getRequestDispatcher("BusinessRegister.jsp").include(request, response);
-				}
+				
   			}catch(SQLException e){
   		   				e.printStackTrace();
   		   			} catch (ClassNotFoundException e) {

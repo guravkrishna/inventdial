@@ -72,6 +72,7 @@
 String city= request.getParameter("city");
 System.out.println(city);
 String category = request.getParameter("category");
+System.out.println(category);
 try{
 	connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 	statement=connection.createStatement();
@@ -97,97 +98,20 @@ try{
 						<a href="main.jsp"><img src="images/logo1.gif" alt=""> </a>
 					</div>
 					<!--SECTION: BROWSE CATEGORY(NOTE:IT'S HIDE ON MOBILE & TABLET VIEW)-->
-					<div class="ts-menu-2"><a href="#" class="t-bb">All Pages <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-						<!--SECTION: BROWSE CATEGORY-->
-						<div class="cat-menu cat-menu-1">
-							<div class="dz-menu">
-								<div class="dz-menu-inn">
-									<h4>Frontend Pages</h4>
-									<ul>
-										<li><a href="main.jsp">Home</a></li>
-										<li><a href="about-us.jsp"> About Us</a> </li>
-										<li><a href="contact-us.jsp"> Contact Us</a> </li>
-									</ul>
-								</div>
-								<div class="dz-menu-inn">
-									<h4>Business 2 Business</h4>
-									<ul>
-										<li> <a href="e2es.jsp">Electronics &amp; Electrical Supplies</a> </li>
-										<li> <a href="im_e.jsp">Industrial Machinery &amp; Equipments</a> </li>
-										<li> <a href="cm_s.jsp">Construction Machinery &amp; Supplies</a> </li>
-										<li> <a href="as_s.jsp">Automobiles Spare Parts &amp; Services</a> </li>
-										
-									</ul>
-								</div>
-								<div class="dz-menu-inn">
-									<h4>Business 2 Customer</h4>
-									<ul>
-									
-										<li><a href="#"> JustDial</a> </li>
-										<li><a href="#">Sulekha</a> </li>
-										<li><a href="#">BizzcityInfo</a> </li>
-										<li><a href="#"> Hotel  </a> </li>
-										<li><a href="#">Flights </a> </li>
-									</ul>
-								</div>
-								<div class="dz-menu-inn">
-									<h4>Customer 2 Customer</h4>
-									<ul>
-										<li><a href="#">OLA</a> </li>
-										<li><a href="#">OLAX</a> </li>
-										<li><a href="#">UBER</a> </li>
-										<li><a href="#">Flipkart</a> </li>
-										
-									</ul>
-								</div>
-								<div class="dz-menu-inn">
-									<h4>Dashboard Pages</h4>
-									<ul>
-										<li><a href="#"> User Register</a> </li>
-										<li><a href="#"> User Login</a> </li>
-										<li><a href="#"> Forgot Password</a> </li>
-										<li><a href="#"> Messages</a> </li>
-										<li><a href="#"> Dashboard Profile</a> </li>
-										<li><a href="#"> Post Ads </a> </li>
-										<li><a href="#"> Download Invoice </a> </li>
-									</ul>
-								</div>
-								<div class="dz-menu-inn lat-menu">
-									<h4>Admin Panel Pages</h4>
-									<ul>
-										<li><a target="_blank" href="admin_login.jsp"> Admin</a> </li>
-										<li><a target="_blank" href="adminpaidlisting.jsp"> All Listing</a> </li>
-										<li><a target="_blank" href="#"> All Users</a> </li>
-										<li><a target="_blank" href="#"> Analytics</a> </li>
-										<li><a target="_blank" href="#"> Advertisement</a> </li>
-										<li><a target="_blank" href="#"> Admin Setting </a> </li>
-										<li><a target="_blank" href="#"> Payments </a> </li>
-									</ul>
-								</div>
-							</div>
-							<div class="dir-home-nav-bot">
-								<ul>
-									<li>A few reasons you’ll love Online Business Directory <span>Call us on: 080 8490 4890</span> </li>
-									<li><a href="advertise.html" class="waves-effect waves-light btn-large"><i class="fa fa-bullhorn"></i> Advertise with us</a>
-									</li>
-									<li><a href="User_free_listing.jsp" class="waves-effect waves-light btn-large"><i class="fa fa-bookmark"></i> Add your business</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+
 					<!--SECTION: SEARCH BOX-->
 					<div class="ts-menu-3">
 						<div class="">
-							<h1 style="color:white; margin-top:8px" >Indias Largest Local Search Engine</h1>
+							<h1 style="color:white;margin-top:15px; font-size:24px;" align="center" >Local Search Engine</h1>
 						</div>
 					</div>
 					<!--SECTION: REGISTER,SIGNIN AND ADD YOUR BUSINESS-->
 					<div class="ts-menu-4">
 						<div class="v3-top-ri">
 							<ul>
-								<li><a href="user_login.jsp" class="v3-menu-sign"><i class="fa fa-sign-in"></i> Sign In</a> </li>
-								<li><a href="User_free_listing.jsp" class="v3-add-bus"><i class="fa fa-plus" aria-hidden="true"></i> Add Listing</a> </li>
+								<li><a href="UserLogin.jsp" class="v3-menu-sign"><i class="fa fa-sign-in"></i> Sign In</a> </li>
+								<!-- <li><a href="User_free_listing.jsp" class="v3-add-bus"><i class="fa fa-plus" aria-hidden="true"></i> Add Listing</a> </li>
+							 -->
 							</ul>
 						</div>
 					</div>
@@ -198,11 +122,14 @@ try{
 						<div class="mob-right-nav-close"><i class="fa fa-times" aria-hidden="true"></i> </div>
 						<h5>Business</h5>
 						<ul class="mob-menu-icon">
-							<li><a href="price.html">Add Business</a> </li>
-							<li><a href="register.jsp">Register</a> </li>
-							<li><a href="login.html">Sign In</a> </li>
+							<!-- <li><a href="Userfreelisting.jsp">Add Business</a> </li>
+							 --><li><a href="register.jsp">Register</a> </li>
+							<li><a href="UserLogin.jsp">Sign In</a> </li>
+							<li><a href="about_us.jsp">About us</a> </li>
+						<li><a href="contact_us.jsp">Contact us</a> </li>
+							
 						</ul>
-						<h5>All Categories</h5>
+						<!-- <h5>All Categories</h5>
 						<ul>
 							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Help Services</a> </li>
 							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Appliances Repair &amp; Services</a> </li>
@@ -215,7 +142,7 @@ try{
 							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Plumbing Contractors</a> </li>
 							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Modular Kitchen</a> </li>
 							<li><a href="list.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Internet Service Providers</a> </li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 			</div>

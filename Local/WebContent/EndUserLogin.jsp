@@ -8,9 +8,9 @@
 	
 	<script type="text/javascript">
 	
-	history.pushState(null,null,'EndUserLogin.jsp');
+	history.pushState(null,null,'EndUserLogin');
 	  window.addEventListener('popstate',function(event){
-	  history.pushState(null,null,'EndUserLogin.jsp');
+	  history.pushState(null,null,'EndUserLogin');
 	  });
  
 </script> 
@@ -45,6 +45,52 @@ function password(length, special) {
  	return password;
 }
 </script>
+<script type="text/javascript">
+          function validateForm()
+            {  
+            var x=document.forms["login"]["contact"].value;
+            var y=document.getElementById('actual').value;            
+            
+                if (y=="taken")
+                {
+                      /*  alert("Contact Number is Correct!");  
+                    return true; */
+                }
+                else{
+                	 alert("Contact Number is InCorrect!");  
+                     return false;
+                	
+                }
+                    
+                    
+             }
+        </script>
+        <script type="text/javascript">
+function loadXMLDoc()
+{
+var xmlhttp;
+var k=document.getElementById("contact").value;
+var urls="checkendusercontact.jsp?ver="+k;
+
+if (window.XMLHttpRequest)
+  {
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4)
+    {
+        document.getElementById("err").innerHTML=xmlhttp.responseText;
+     }
+  }
+xmlhttp.open("GET",urls,true);
+xmlhttp.send();
+}
+</script>
 </head>
 
 <body data-ng-app="" onload="password(4)">
@@ -52,36 +98,46 @@ function password(length, special) {
 	<!--TOP SEARCH SECTION-->
 	
 	<%@include file="header.jsp" %>
+	<% session.getAttribute("subcategory");
+	String subcategory=(String)request.getParameter("subcategory");
+	System.out.println(subcategory); 
+	String title=request.getParameter("BusinessTitle");
+	System.out.println(title); 
+	/* String email=request.getParameter("email");
+	System.out.println(email);
+	session.setAttribute("email",email); */%>
 	<section class="tz-register">
 			<div class="log-in-pop">
-				<!-- <div class="log-in-pop-left">
-					
-				</div> -->
+				 <div class="log-in-pop-left"> 
+			     <img src="images/userlogin.jpg" style="width:227px;height:299px;""> 
+			     </div>
 				<div class="log-in-pop-right">
 					<!-- <a href="#" class="pop-close" data-dismiss="modal"><img src="uploadimg/20.jpg"  width=320 height=240 alt="" />
 					</a> -->
-					<h3>Welcome To Our Website</h3></br></br>
+					<h3>Welcome to Invent Dial</h3></br></br>
 					<h4>Please Login</h4>
 					
 					<!-- <p>Don't have an account? Create your account. It's take less then a minutes</p> -->
-					<form class="s12" action="SendEndUserOtp.jsp" method="post">
+					<form class="s12" action="SendEndUserOtp.jsp" name="login" onsubmit="return validateForm();">
 						<div>
 							<div class="input-field s12">
 							<input type="hidden" name="pwd" id="pwd" for="pwd">
 		
 				 <input type="hidden" id="id" name="id"/>
-								<input type="text" name="contact" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  maxlength="10" class="validate" autocomplete="off" required/>
+				 <input type="hidden" id="id" name="title" value='<%=title%>'/>
+								<input type="text" name="contact" id="contact"  onkeyup="loadXMLDoc()" required>
  								<label>Contact Number</label>
+ 								<span id="err"> </span> 
 							</div>
 						</div>
 						<div>
 							<div class="input-field s4">
-								<input type="submit" value="Login" class="waves-effect waves-light log-in-btn">
+								<input type="submit" value="Login" class=" log-in-btn" >
 							</div>
 						</div><br>
-						<h4>If Not Register Click On Register</h4>
+						<h4> Not Register ? </h4><div class="input-field s12"><a href="EndUserRegister.jsp"><input type="button" value="Register"></a></div>
 						<div>
-							<div class="input-field s12"><a href="EndUserRegister.jsp"><input type="button" value="Register"></a></div>
+							<a href="main.jsp"><span style="color:Blue">Go to Home</span></a>
 						</div>
 					</form>
 				</div>

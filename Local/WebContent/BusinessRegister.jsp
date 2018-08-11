@@ -4,19 +4,19 @@
 <%@ page import = "javax.mail.internet.*,javax.activation.*"%>
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
 <%@page import="java.net.NetworkInterface"%>
-<%-- <%@page import="sun.misc.VM"%> --%>
+<%--  <%@page import="sun.misc.VM"%> --%>
 <%@ page import="java.sql.*,java.util.*,java.text.*,java.text.SimpleDateFormat" %>
 <%@page import="java.net.InetAddress" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>End User Signup</title>
-<script type="text/javascript">
-	history.pushState(null,null,'BusinessRegister');
+<!-- <script type="text/javascript">
+	history.pushState(null,null,'BusinessRegister.jsp');
 	  window.addEventListener('popstate',function(event){
-	  history.pushState(null,null,'BusinessRegister');
+	  history.pushState(null,null,'BusinessRegister.jsp');
 	  });
-</script>
+</script>  -->
 <script type="text/javascript">
 function password(length, special) {
   var iteration = 0;
@@ -26,23 +26,21 @@ function password(length, special) {
       var special = false;
   }
   while(iteration < length){
-    randomNumber = (Math.floor((Math.random() * 100)) % 94) + 33;
-    if(!special){
-      if ((randomNumber >=33) && (randomNumber <=47)) { continue; }
-      if ((randomNumber >=58) && (randomNumber <=64)) { continue; }
-      if ((randomNumber >=91) && (randomNumber <=96)) { continue; }
-      if ((randomNumber >=123) && (randomNumber <=126)) { continue; }
-    }
+    /* randomNumber = (Math.floor((Math.random() * 100)) % 94) + 33; */
+    randomNumber=Math.floor(Math.random() * 100); 
+     if(!special){
+      if ((randomNumber >=49) && (randomNumber <=57)) { continue; }
+    } 
     iteration++;
-    password += String.fromCharCode(randomNumber);
+    password += randomNumber;
   }
-  //document.getElementById('pwd').innerHTML=password;
+  document.getElementById('pwd').innerHTML=password;
   document.getElementById("id").value=password;
  	return password;
 }
-</script>
+</script> 
 </head>
-<body>
+<body data-ng-app="" onload="password(4)">
 
 	<%@include file="header.jsp" %>
 	
@@ -63,27 +61,32 @@ function password(length, special) {
 					   String mail=request.getParameter("email"); 
 					   System.out.println(mail);
 					   String pass=request.getParameter("pass"); 
-					   System.out.println();
+					   System.out.println(pass);
 					   
 					   String confirmpass=request.getParameter("confirmpass"); 
-					  String msg="Your OTP is ";
+					  /* String msg="Your OTP is ";
 					 String EmailID=request.getParameter("mail");
-					 String otp=request.getParameter("id");
-				    System.out.println("OTP :-"+otp);
+				 String otp=request.getParameter("id"); 
+				  System.out.println("OTP :-"+otp);
 				    System.out.println("EmailID :-"+EmailID);
-				    SendMobileOtp s=new SendMobileOtp() ;
-					 s.sendSms(phone, msg, otp);
+				   SendMobileOtp s=new SendMobileOtp() ;
+					s.sendSms(phone, msg, otp);  */
 				   %>
-					<form class="s12" action="./BusinessRegister" method="post">
+					<form class="s12" action="SendOTP.jsp" method="">
+						  <input type="hidden" name="pwd" id="pwd" for="pwd"> 
+		
+				 <input type="hidden" id="id" name="id"/> 
 						<div>
 						<div class="input-field s12">
 								<input type="text" id="autocomplete" placeholder="Enter City" name="city" class="autocomplete" style="background-color:#fff;color:black;height:5.5rem;background-size:12.75pt;background-position-x:7.5pt;font-size`:20px;"
 						                      onFocus="geolocate()" required>
-						         <label>Enter City</label></input>
+						         <label>Enter City</label>
 							</div>
+								
 						 <div class="input-field s12">
 								         <select name="category" required>
-												<option value="">Select category</option>
+												<option value=""><b>Select category</b></option>
+												<option value="Hospital">Hospital</option>
 												<option value="Hotel and Resorts">Hotel and Resorts</option>
 												<option value="Education and Traninings">Education and Traninings</option>
 												<option value="Internet Service Providers">Internet Service Providers</option>
@@ -95,7 +98,20 @@ function password(length, special) {
 												<option value="Packers and Movers">Packers and Movers</option>
 												<option value="Gyms and Fitness">Gyms and Fitness</option>
 												<option value="Yoga Classes">Yoga Classes</option>
-												<option value="Health and Fitness">Health and Fitness</option>
+												<option value="Coaching & Tuitions">Coaching & Tuitions</option>
+												<option value="Job Training">Job Training</option>
+												<option value="Skin Care & Treatment">Skin Care & Treatment</option>
+												<option value="Property and Rentels">Property and Rental</option>
+												<option value="Domestic Help Services">Domestic Help Services</option>
+												<option value="Home Appliances Repair & Services">Home Appliances Repair & Services</option>
+												<option value="Sports">Sports</option>
+												<option value="Furniture Dealers">Furniture Dealers</option>
+												<option value="Packers and Movers">Packers and Movers</option>
+												<option value="Interior Designers">Interior Designers</option>
+												<option value="Internet Service Providers">Internet Service Providers</option>
+												<option value="Security System Dealers">Security System Dealers</option>
+												<option value=""></option>
+												
 											</select> 
 							           </div>
 						        </div>
@@ -104,8 +120,8 @@ function password(length, special) {
 						</div>
 							<div>
 							<div class="input-field s12">
-								<input type="text"  name="telephone" class="validate" >
-								<label>Telephone</label>
+								<input type="text"  name="telephone" placeholder="Telephone Number" class="validate" >
+								
 							</div>
 						</div>
 					    
@@ -129,11 +145,11 @@ function password(length, special) {
 						</div>
 						<div>
 							<div class="input-field s12">
-								<input type="hidden" class="validate" name="email"  value='<%=mail %>' readonly>
+								<input type="hidden" class="validate" name="mail"  value='<%=mail %>' readonly>
 							
 							</div>
 						</div>
-						<div>
+						 <div>
 							<div class="input-field s12">
 								<input type="hidden" class="validate" name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value='<%=pass %>' readonly required>
 								
@@ -144,12 +160,12 @@ function password(length, special) {
 								<input type="hidden" class="validate" name="confirmpass"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value='<%=confirmpass %>' readonly required>
 							
 							</div>
-						</div>
-						 <!-- <div> -->
+						</div> 
+						  <div> 
 							<div class="input-field s6">
-								<input type="submit" value="Next" class="waves-effect waves-light log-in-btn"> 
+								<input type="submit" value="Next" class=" log-in-btn"> 
 							</div>
-						<!-- </div>  -->
+						</div> 
 						
 					</form>
 				</div>

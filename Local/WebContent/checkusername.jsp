@@ -6,11 +6,11 @@
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection con =DriverManager.getConnection("jdbc:mysql://localhost:3306/localsearchengine","root","root");
                     Statement st=con.createStatement();
-                    ResultSet rs = st.executeQuery("select * from signup where email='"+sn+"'");  // this is for name
+                    ResultSet rs = st.executeQuery("select * from signup where contact='"+sn+"'");  // this is for name
                     if(rs.next())
                     {   %>
                         <font color=red>
-                        Email Id already taken
+                        Contact Number already taken!
                         <input type="hidden" id="actual" name="actual" value="taken">
                         <!-- <input type="submit" value="submit"> -->
                         </font>
@@ -18,7 +18,7 @@
                    <% }else {%>
                         <font color=green>
                         <input type="hidden" id="actual" name="actual" value="available">
-                        Available
+                       
                         </font>
                         <!-- <input type="submit" value="submit"> -->
                    <% }%>
